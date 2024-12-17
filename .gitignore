@@ -1,0 +1,18 @@
+# Node.js dependencies
+node_modules/
+package-lock.json
+
+# Python virtual environment
+venv/
+.env
+
+# Logs
+*.log
+
+# Build files
+dist/
+build/
+
+# IDE and editor files
+.vscode/
+.idea/
