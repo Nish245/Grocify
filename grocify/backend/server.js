@@ -1,31 +1,32 @@
-import express from "express";
-import cors from "cors";
-import cookieParser from "cookie-parser";
-import mongoose from "mongoose";
-import {PORT, URI} from "./config/index.js";
-import Router from "./routes/index.js";
+const express = require('express');
+const mongoose = require('mongoose');
+require('dotenv').config();
 
-const server = express();
+const authRoutes = require('./routes/authRoutes');
+const userRoutes = require('./routes/userRoutes');
 
-// Configure header information
-server.use(cors());
-server.disable("x-powered-by");
-server.use(cookieParser());
-server.use(express.urlencoded({ extended: false}));
-server.use(express.json());
+const app = express();
+const PORT = process.env.PORT || 3000;
 
-// Configure database
-mongoose.promise = global.Promise;
-mongoose.set("strictQuery", false);
-await mongoose
-    .connect(URI, {})
-    .then(console.log("Connected to database"))
-    .catch((err) => console.log(err));
+// Connect to MongoDB
+mongoose.connect(process.env.MONGO_URI, {
+})
+  .then(() => console.log('Connected to MongoDB'))
+  .catch((err) => console.error('MongoDB connection error:', err));
 
-// Configure routes
-Router(server);
+// Middleware
+app.use(express.json());
 
-// Start server
-server.listen(PORT, () =>
-    console.log(`Server running on http://localhost:${PORT}`)
-);
+// Routes
+app.use('/api/auth', authRoutes);
+app.use('/api/user', userRoutes);
+
+// Default route
+app.get('/', (req, res) => {
+  res.send('Welcome to the User Registration and Login API!');
+});
+
+// Start the server
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});
