@@ -16,3 +16,7 @@ build/
 # IDE and editor files
 .vscode/
 .idea/
+
+# .DS_Store
+.DS_Store
+grocify/.DS_Store
