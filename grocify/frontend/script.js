@@ -20,5 +20,6 @@ http.listen(port, ()=>{
 
 //404 Not Found
 app.get("/:universalURL", (req, res) => {
-    res.send("404 URL NOT FOUND");
+    // res.send("404 URL NOT FOUND");
+    res.status(404).sendFile(__dirname + '/views/404.html');
 });
