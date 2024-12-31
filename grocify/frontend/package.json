@@ -1,0 +1,16 @@
+{
+  "name": "frontend",
+  "version": "1.0.0",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node script.js"
+  },
+  "author": "Grocify",
+  "license": "ISC",
+  "description": "A platform to compare product prices across stores, suggest the least expensive items, and reduce food waste.",
+  "dependencies": {
+    "express": "^4.21.2",
+    "node": "^23.5.0"
+  }
+}
