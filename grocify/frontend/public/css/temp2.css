@@ -1,0 +1,138 @@
+/* Custom styles for the website */
+body {
+    font-family: 'San Francisco', Helvetica Neue, Helvetica, Arial, and sans-serif;
+  }
+
+  
+  #hero {
+    background: url('https://via.placeholder.com/1920x600') no-repeat center center;
+    background-size: cover;
+    padding: 150px 0;
+  }
+  
+  #hero h1 {
+    font-size: 4rem;
+    font-weight: bold;
+  }
+  
+  #products h4 {
+    margin-bottom: 2rem;
+  }
+  
+  .card-title {
+    font-weight: bold;
+  }
+  
+  footer {
+    padding: 20px 0;
+  }
+
+  /* Remove underline from navbar links */
+nav .nav-wrapper a {
+    text-decoration: none; /* Remove underline */
+    /* font-family: 'San Francisco', Helvetica Neue, Helvetica, Arial, and sans-serif; */
+  }
+  
+  /* Optional: Add hover effect if desired */
+  nav .nav-wrapper a:hover {
+    text-decoration: none; /* Keeps underline hidden on hover */
+    color: #f57c00; /* Example hover color */
+  }
+
+.sidenav-trigger i {
+    font-size: 2rem; /* Increase menu icon size */
+    cursor: pointer;
+}
+  
+
+/* Pill-style buttons */
+.btn-large {
+    border-radius: 50px; /* Rounded corners for pill shape */
+    padding: 0 30px; /* Extra horizontal padding */
+    font-size: 1.2rem; /* Adjust font size */
+    text-transform: none; /* Remove uppercase styling */
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effects */
+}
+.btn-medium {
+    border-radius: 50px; /* Rounded corners for pill shape */
+    padding: 0 30px; /* Extra horizontal padding */
+    font-size: 1.2rem; /* Adjust font size */
+    text-transform: none; /* Remove uppercase styling */
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effects */
+    size-adjust: 0.5;
+}
+
+/* Hover effect: Turn button red */
+.btn-large:hover {
+    background-color: red; /* Change background to red on hover */
+    color: white; /* Ensure text is visible on the red background */
+}
+
+.btn-medium:hover {
+    background-color: red; /* Change background to red on hover */
+    color: white; /* Ensure text is visible on the red background */
+}
+
+/* Features Section Styles */
+.features-section {
+    padding: 50px 0;
+    background-color: #f9f9f9;
+  }
+  
+  .features-section h4 {
+    margin-bottom: 30px;
+    font-size: 2.2rem;
+    font-weight: bold;
+  }
+  
+  .feature-card {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  
+  .feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  }
+  
+  .feature-card i {
+    margin-bottom: 15px;
+  }
+
+  /* Login Section Styles */
+  .login-section {
+    margin-top: 20px;
+    padding: 120px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+    
+
+  /* Card Section */
+  .card {
+    margin-top: 30px;
+    padding: 30px;
+    background-color: #f9f9f9;
+    border-radius: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+
+  /*  Custom CSS for the gradient background */
+  .bg-gradient-primary-to-secondary {
+    background: #1e30f3;
+    background: linear-gradient(135deg, #1e30f3 0%, #e21e80 100%);
+  }
+
+/* Custom CSS for the gradient text */
+  .text-gradient {
+    background: -webkit-linear-gradient(315deg, #1e30f3 0%, #e21e80 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
