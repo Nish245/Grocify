@@ -21,7 +21,7 @@ def recommend_by_index(product_index, top_n):
 
         # Prepare recommendations
         recommendations = []
-        for i, distance in zip(indices[0][1:], distances[0][1:]):  # Skip the first as it's the input product
+        for i, distance in zip(indices[0][1:], distances[0][1:]): 
             product = merged_data.iloc[i]
             recommendations.append({
                 'Product': product['Product'],
@@ -93,6 +93,5 @@ def recommend_by_name_api():
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
-# Run the Flask app
-if __name__ == '__main__':
-    app.run(debug=True, ssl_context=('cert.pem', 'key.pem'))
+if __name__ == "__main__":
+    app.run(debug=True)  # No SSL context
