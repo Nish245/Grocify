@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grocify - Your Online Grocery Store</title>
+    <!-- Import Materialize CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
+    <!-- Import Google Font -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f9fafb;
+        }
+        .hero {
+            background-size: cover;
+            background-position: center;
+            text-align: center;
+            color: #d11818;
+            padding: 4rem 2rem;
+        }
+        .category-card img {
+            height: 150px;
+            object-fit: cover;
+        }
+        .testimonial {
+            font-size: 1.2rem;
+            font-style: italic;
+        }
+        footer p {
+            text-align: center;
+        }
+        .list-section {
+            margin: 3rem 0;
+        }
+        .list-section input {
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="blue darken-4">
+            <div class="nav-wrapper container">
+                <img src="C:\Users\ABHIJEET\Downloads\Grocifylogo.png" alt="Grocify Logo" style="vertical-align: middle; height: 80px; margin-right: 16px;"> Grocify</a>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li><a href="list.html">Shopping List</a></li>
+                    <li><a href="cart.html">Cart</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <div class="hero">
+        <img src="C:\Users\ABHIJEET\Downloads\background_image.png" alt="Hero Image" style="width: 30%; height: auto; margin-bottom: 20px;">
+        <h1>Welcome to Grocify</h1>
+        <p>Your one-stop solution for online groceries. Freshness delivered to your doorstep!</p>
+    </div>
+    
+
+    <div class="container">
+        <div class="section">
+            <h2 class="center-align">Featured Categories</h2>
+            <div class="row">
+                <!-- Fruits Category -->
+                <div class="col s12 m3">
+                    <a href="fruits.html" class="category-link">
+                        <div class="card category-card">
+                            <div class="card-image">
+                                <img src="C:\Users\ABHIJEET\Downloads\fruits.jpg" alt="Fruits">
+                            </div>
+                            <div class="card-content center-align">
+                                <span class="card-title">Fruits</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <!-- Vegetables Category -->
+                <div class="col s12 m3">
+                    <a href="vegetables.html" class="category-link">
+                        <div class="card category-card">
+                            <div class="card-image">
+                                <img src="C:\Users\ABHIJEET\Downloads\vegetables.jpg" alt="Vegetables">
+                            </div>
+                            <div class="card-content center-align">
+                                <span class="card-title">Vegetables</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <!-- Milk Category -->
+                <div class="col s12 m3">
+                    <a href="milk.html" class="category-link">
+                        <div class="card category-card">
+                            <div class="card-image">
+                                <img src="C:\Users\ABHIJEET\Downloads\milk.jpg" alt="Milk">
+                            </div>
+                            <div class="card-content center-align">
+                                <span class="card-title">Milk</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <!-- Snacks Category -->
+                <div class="col s12 m3">
+                    <a href="snacks.html" class="category-link">
+                        <div class="card category-card">
+                            <div class="card-image">
+                                <img src="C:\Users\ABHIJEET\Downloads\snacks.jpg" alt="Snacks">
+                            </div>
+                            <div class="card-content center-align">
+                                <span class="card-title">Snacks</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+        <div class="container">
+            <h2 class="center-align">What Our Customers Say</h2>
+            <div class="carousel center-align">
+                <div class="carousel-item">
+                    <p class="testimonial">"Grocify has made grocery shopping so convenient! Highly recommend it." - Sarah</p>
+                </div>
+                <div class="carousel-item">
+                    <p class="testimonial">"The fresh produce is unmatched. Always on time!" - James</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer class="page-footer blue darken-4">
+        <div class="container">
+            <div class="row">
+                <div class="col s12">
+                    <p>&copy; 2025 Grocify. All Rights Reserved.</p>
+                    <p><a href="contact.html" class="yellow-text text-lighten-2">Contact Us</a> | <a href="privacy.html" class="yellow-text text-lighten-2">Privacy Policy</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Import Materialize JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize Carousel
+            var carousels = document.querySelectorAll('.carousel');
+            M.Carousel.init(carousels, {
+                fullWidth: true,
+                indicators: true
+            });
+
+            // List Feature
+            const addItemButton = document.getElementById('add-item');
+            const listInput = document.getElementById('list-item');
+            const list = document.getElementById('list');
+
+            addItemButton.addEventListener('click', function() {
+                const itemText = listInput.value.trim();
+                if (itemText) {
+                    const listItem = document.createElement('li');
+                    listItem.className = 'collection-item';
+                    listItem.innerHTML = `
+                        ${itemText}
+                        <a href="#!" class="secondary-content delete-item">
+                            <i class="material-icons red-text">delete</i>
+                        </a>
+                    `;
+                    list.appendChild(listItem);
+                    listInput.value = '';
+                }
+            });
+
+            list.addEventListener('click', function(e) {
+                if (e.target.classList.contains('delete-item') || e.target.parentElement.classList.contains('delete-item')) {
+                    const listItem = e.target.closest('li');
+                    listItem.remove();
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fruits Catalogue</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
+    <script>
+        function addToCart(productName) {
+            // Get the current cart items from localStorage or initialize it as an empty array
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            // Add the new product to the cart
+            cart.push(productName);
+            // Save the updated cart back to localStorage
+            localStorage.setItem('cart', JSON.stringify(cart));
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h2 class="center-align">Fruits Catalogue</h2>
+        <div class="row">
+            <!-- Example Product 1: Apple -->
+            <div class="col s12 m4">
+                <div class="card">
+                    <div class="card-image">
+                        <img src="C:\Users\ABHIJEET\Downloads\apple.jpg" alt="Apple" style="height: 250px;">
+                    </div>
+                    <div class="card-content">
+                        <span class="card-title">Apple</span>
+                        <p>Fresh and delicious apples</p>
+                    </div>
+                    <div class="card-action">
+                        <a href="#" class="btn" onclick="addToCart('Apple')">Add to Cart</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Example Product 2: Banana -->
+            <div class="col s12 m4">
+                <div class="card">
+                    <div class="card-image">
+                        <img src="C:\Users\ABHIJEET\Downloads\banana.jpg" alt="Banana">
+                    </div>
+                    <div class="card-content">
+                        <span class="card-title">Banana</span>
+                        <p>Fresh bananas</p>
+                    </div>
+                    <div class="card-action">
+                        <a href="#" class="btn" onclick="addToCart('Banana')">Add to Cart</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Example Product 3: Orange -->
+            <div class="col s12 m4">
+                <div class="card">
+                    <div class="card-image">
+                        <img src="C:\Users\ABHIJEET\Downloads\orange.jpg" alt="Orange">
+                    </div>
+                    <div class="card-content">
+                        <span class="card-title">Orange</span>
+                        <p>Fresh oranges for your juice</p>
+                    </div>
+                    <div class="card-action">
+                        <a href="#" class="btn" onclick="addToCart('Orange')">Add to Cart</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Navigation Buttons -->
+        <div class="center-align">
+            <!-- Link to Home Page -->
+            <a href="home.html" class="btn">Home</a>
+            <!-- Link to Cart Page -->
+            <a href="cart.html" class="btn">Go to Cart</a>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+</html>

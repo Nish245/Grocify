@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+    <!-- Materialize CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
+    <script>
+        window.onload = function() {
+            // Get the cart items from localStorage
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+            // Find the cart container element
+            const cartContainer = document.getElementById('cart-items');
+
+            // If the cart is empty, display a message
+            if (cart.length === 0) {
+                cartContainer.innerHTML = "<p>Your cart is empty.</p>";
+            } else {
+                // Create an object to hold item counts
+                const itemCounts = {};
+
+                // Count the occurrences of each item
+                cart.forEach(item => {
+                    itemCounts[item] = (itemCounts[item] || 0) + 1;
+                });
+
+                // Display the items in the cart with their counts and buttons
+                Object.keys(itemCounts).forEach(item => {
+                    const cartItemElement = document.createElement('li');
+                    cartItemElement.classList.add('collection-item');
+
+                    // Create the item text (name + quantity)
+                    const itemText = document.createElement('span');
+                    itemText.textContent = `${item} x${itemCounts[item]}`;
+                    cartItemElement.appendChild(itemText);
+
+                    // Create the buttons (plus and minus)
+                    const buttonsContainer = document.createElement('div');
+                    buttonsContainer.classList.add('secondary-content');
+
+                    const minusButton = document.createElement('a');
+                    minusButton.classList.add('btn', 'waves-effect', 'waves-light', 'btn-small', 'purple', 'darken-2');
+                    minusButton.textContent = '-';
+                    minusButton.href = '#';
+                    minusButton.onclick = function() {
+                        updateCart(item, -1);
+                    };
+
+                    const plusButton = document.createElement('a');
+                    plusButton.classList.add('btn', 'waves-effect', 'waves-light', 'btn-small', 'purple', 'darken-2');
+                    plusButton.textContent = '+';
+                    plusButton.href = '#';
+                    plusButton.onclick = function() {
+                        updateCart(item, 1);
+                    };
+
+                    buttonsContainer.appendChild(minusButton);
+                    buttonsContainer.appendChild(plusButton);
+                    cartItemElement.appendChild(buttonsContainer);
+
+                    // Append the item to the cart
+                    cartContainer.appendChild(cartItemElement);
+                });
+            }
+
+            // Function to update the cart item quantity
+            function updateCart(item, quantityChange) {
+                let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+                // Modify the cart based on the quantity change
+                if (quantityChange === 1) {
+                    cart.push(item);
+                } else if (quantityChange === -1) {
+                    // Find the index of the item
+                    const itemIndex = cart.indexOf(item);
+                    if (itemIndex !== -1) {
+                        cart.splice(itemIndex, 1); // Remove one occurrence of the item
+                    }
+                }
+
+                // Save the updated cart to localStorage
+                localStorage.setItem('cart', JSON.stringify(cart));
+                location.reload(); // Reload the page to reflect the changes
+            }
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <nav class="purple darken-2">
+            <div class="nav-wrapper container">
+                <a href="home.html" class="brand-logo">
+                    <img src="C:\Users\ABHIJEET\Downloads\Grocifylogo.png" alt="Grocify Logo" style="vertical-align: middle; height: 80px; margin-right: 16px;">Grocify</a>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="checkout.html">Checkout</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="card-panel">
+                <h4 class="center-align">Your Cart</h4>
+                <ul id="cart-items" class="collection">
+                    <!-- Cart items will be dynamically added here -->
+                </ul>
+                <div class="center-align">
+                    <a href="home.html" class="btn purple darken-2 waves-effect waves-light">Back to Home</a>
+                    <a href="checkout.html" class="btn purple darken-2 waves-effect waves-light">Checkout</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Materialize JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+</html>
