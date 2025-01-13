@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Register | Grocify</title>
+  <title>Privacy Policy | Grocify</title>
     <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="assets/icons.png" />
   <!-- Materialize CSS Framework -->
@@ -20,7 +20,7 @@
         <a href="index.html" class="brand-logo black-text"><img src="assets/logo.png" alt="Grocify" width="15%"></a>
         <a href="#" data-target="mobile-menu" class="sidenav-trigger"><i class="material-icons black-text"><i class="material-icons">menu</i></i></a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <li><a href="index.html" class="black-text">Home</a></li>
+          <li><a href="index.html" class="black-text">Home</a></li>
           <li><a href="index.html/#about-us" class="black-text">About Us</a></li>
           <li><a href="pricecheck.html" class="black-text">Price Check</a></li>
           <li><a href="recommendation.html" class="black-text">Recommendation</a></li>
@@ -38,50 +38,25 @@
     <li><a href="recommendation.html" class="black-text">Recommendation</a></li>
     <li><a href="prediction.html" class="black-text">Prediction</a></li>
     <li><a href="contact.html" class="black-text">Contact</a></li>
-    <li><a href="login.html" class="black-text">Log In</a></li>
+    <li><a href="register.html" class="black-text">Sign Up</a></li>
   </ul>
 
-  <!-- SignUp Section -->
-  <div class="section no-pad-bot" id="SignUp">
+  <!-- login Section -->
+  <div class="section no-pad-bot" id="login">
     <div class="container">
-      
       <div class="login-register-card">
         <div class="card-content">
-            <div class="text-center mb-5">
-                <h1>Sign Up</h1>
-                <p class="lead fw-normal text-muted mb-0">
-                    Join Now – Start Saving on Groceries Today!
-                </p>
-                <div class="col col-xl-10">
-                    <div class="col-md-6 col-lg-5 d-none d-md-block"></div>
-                        <form id="registerForm">
-                            <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Sign Up your account</h5>
-                            <div class="form-outline mb-4">
-                                <label class="form-label" for="username">Username</label>
-                                <input type="text" id="username" name="username" class="form-control form-control-lg" required />
-                            </div>
-                            <div class="form-outline mb-4">
-                                <label class="form-label" for="email">Email address</label>
-                                <input type="email" id="email" name="email" class="form-control form-control-lg" required />
-                            </div>
-                            <div class="form-outline mb-4">
-                                <label class="form-label" for="password">Password</label>
-                                <input type="password" id="password" name="password" class="form-control form-control-lg" required />
-                            </div>
-                            <div class="pt-1 mb-4">
-                                <button type="submit" class="btn-large waves-effect waves-light black white-text">Sign Up</button>
-                            </div>
-                            <p class="mb-5 pb-lg-2" style="color: #393f81;">Have an account? <a href="login.html" style="color: #393f81;">Login here</a></p>
-                            <a href="#!" class="small text-muted">Terms of use.</a>
-                            <a href="#!" class="small text-muted">Privacy policy</a>
-                        </form>
-                    </div> 
-                </div>
+          <div class="text-center mb-5">
+            <h3>Privacy Policy</h3>
           </div>
-        </div>
+          <div class="col col-xl-10">
+            1. 
+          </div>
+        </div>  
       </div>
     </div>
   </div>
+
 
   <!-- Footer -->
   <footer class="page-footer black">
@@ -89,7 +64,7 @@
       <div class="row">
         <div class="col s12">
           <h5 class="white-text"></h5>
-          <a href="/ ">Home</a>
+            <a href="/ ">Home</a>
             <span class="mx-1">&middot;</span>
             <a href="/#about-us">About Us</a>
             <span class="mx-1">&middot;</span>
@@ -115,26 +90,26 @@
     });
   </script>
   <script>
-    // Register Form
-    document.getElementById('registerForm').addEventListener('submit', async (e) => {
+    // Login Form
+    document.getElementById('loginForm').addEventListener('submit', async (e) => {
                 e.preventDefault();
-                const username = document.getElementById('username').value;
+
                 const email = document.getElementById('email').value;
                 const password = document.getElementById('password').value;
 
                 try {
-                    const response = await fetch('http://localhost:4000/api/auth/register', {
+                    const response = await fetch('http://localhost:4000/api/auth/login', {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ username, email, password })
+                        body: JSON.stringify({ email, password })
                     });
 
                     const result = await response.json();
                     if (response.ok) {
-                        alert('Registration successful!');
-                        window.location.href = 'login.html';
+                        alert('Login successful!');
+                        window.location.href = 'dashboard.html';
                     } else {
-                        alert(result.error || 'Registration failed!');
+                        alert(result.error || 'Login failed!');
                     }
                 } catch (error) {
                     alert('Error connecting to the server. Please try again later.');

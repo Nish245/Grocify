@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard | Grocify</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/icons.png" />
+  <!-- Materialize CSS Framework -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/temp2.css">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="white">
+    <div class="nav-wrapper container">
+        <a href="index.html" class="brand-logo black-text"><img src="assets/logo.png" alt="Grocify" width="15%"></a>
+        <a href="#" data-target="mobile-menu" class="sidenav-trigger"><i class="material-icons black-text"><i class="material-icons">menu</i></i></a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a href="/" class="black-text">Home</a></li>
+            <li><a href="/#about-us" class="black-text">About Us</a></li>
+            <li><a href="pricecheck.html" class="black-text">Price Check</a></li>
+            <li><a href="recommendation.html" class="black-text">Recommendation</a></li>
+            <li><a href="prediction.html" class="black-text">Prediction</a></li>
+            <li><a href="contact.html" class="black-text">Contact</a></li>
+            <li><i class="material-icons black-text">person_pin</i></li>
+        </ul>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <ul class="sidenav" id="mobile-menu">
+    <li><a href="/ " class="black-text">Home</a></li>
+    <li><a href="#about-us" class="black-text">About Us</a></li>
+    <li><a href="pricecheck.html" class="black-text">Price Check</a></li>
+    <li><a href="recommendation.html" class="black-text">Recommendation</a></li>
+    <li><a href="prediction.html" class="black-text">Prediction</a></li>
+    <li><a href="contact.html" class="black-text">Contact</a></li>
+    <li><a href="register.html" class="black-text">Sign Up</a></li>
+  </ul>
+
+  <!-- Dashboard Section -->
+
+  <div class="row container">
+    <div class="col s3 m4 l3">
+      <!-- Left Hand Side navigation panel -->
+      <ul class="section table-of-contents bold-active" id="dashboard-menu">
+        <li><a href="/ " class="active black-text">Home</a></li>
+        <li><a href="pricecheck.html" class="black-text">Price Check</a></li>
+        <li><a href="recommendation.html" class="black-text">Recommendation</a></li>
+        <li><a href="prediction.html" class="black-text">Prediction</a></li>
+        <li><a href="contact.html" class="black-text">Contact</a></li>
+        <li><a href="" class="black-text">Sign Out</a></li>
+      </ul>
+    </div>
+
+    <div class="col s9 m8 l9">
+      <!-- Right Hand Side page content  -->
+        <div class="" id="products">
+            <h4 class="center text-gradient">Welcome Back !!</h4>
+            <h5 class="center text-gradient">What would you like to do today?</h5>
+                <div class="row">
+                <!-- Price Check -->
+                    <div class="col s12 m6 l4">
+                        <div class="card">
+                            <a href="pricecheck.html">
+                                <div class="card-content">
+                                    <span class="card-title">Price Check</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                <!-- Recommendation -->
+                    <div class="col s12 m6 l4">
+                        <div class="card">
+                            <a href="recommendation.html">
+                                <div class="card-content">
+                                    <span class="card-title">Recommendation</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                <!-- Prediction -->
+                <div class="col s12 m6 l4">
+                    <div class="card">
+                        <a href="prediction.html">
+                            <div class="card-content">
+                                <span class="card-title">Prediction</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                </div>
+            </div>   
+        </div>
+    </div>
+
+  
+  <!-- Footer -->
+  <footer class="page-footer black">
+    <div class="container">
+      <div class="row">
+        <div class="col s12">
+          <h5 class="white-text"></h5>
+            <a href="/ ">Home</a>
+            <span class="mx-1">&middot;</span>
+            <a href="/#about-us">About Us</a>
+            <span class="mx-1">&middot;</span>
+            <a class="small" href="privacy.html">Privacy</a>
+            <span class="mx-1">&middot;</span>
+            <a class="small" href="termsofuse.html">Terms</a>
+            <span class="mx-1">&middot;</span>
+            <a class="small" href="contact.html">Contact</a>
+            <p class="grey-text text-lighten-4">© <script>document.write(/\d{4}/.exec(Date())[0])</script> Grocify. All rights reserved.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Materialize JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <!-- Custom JS -->
+  <script>
+    // Initialize Mobile Sidenav
+    document.addEventListener('DOMContentLoaded', function () {
+      const elems = document.querySelectorAll('.sidenav');
+      M.Sidenav.init(elems);
+    });
+
+    // Dark Mode Toggle
+    const darkModeToggle = document.getElementById('dark-mode-toggle');
+    darkModeToggle.addEventListener('click', (event) => {
+      event.preventDefault();
+      document.body.classList.toggle('dark-mode');
+      darkModeToggle.textContent = document.body.classList.contains('dark-mode') ? 'Light Mode' : 'Dark Mode';
+    });
+  </script>
+
+</body>
+</html>
