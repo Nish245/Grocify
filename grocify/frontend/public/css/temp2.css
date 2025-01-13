@@ -6,7 +6,11 @@ body {
     flex-direction: column;
   }
 
-  
+  .hero-section {
+    padding: 50px 0;
+    background-color: white;
+  }
+
   #hero {
     /* background: url(public/assets/background_image_2.jpeg) no-repeat center center; */
     /* background: linear-gradient(45deg, HSLA(215, 62%, 44%, 1), #F62D51); */
@@ -193,6 +197,13 @@ nav .nav-wrapper a {
   border-radius: 10px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s, box-shadow 0.3s;
+
+  /* Fixed Size */
+  height: 300px; /* Set a uniform height for all cards */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Ensures content is spaced evenly */
+  align-items: center; /* Center-aligns the content horizontally */
 }
 
 .testimonial-card:hover {
@@ -232,4 +243,76 @@ nav .nav-wrapper a {
 .login-register-card:hover {
   transform: translateY(-10px);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Legal Pages */
+.legal-section {
+  padding: 50px 0;
+  background-color: white;
+}
+
+.legal-section h4 {
+  margin-bottom: 30px;
+  font-size: 2.2rem;
+  font-weight: bold;
+}
+
+.legal-card{
+    margin-top: 30px;
+    padding: 30px;
+    background-color: #f9f9f9;
+    border-radius: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.legal-card-2{
+  margin-top: 30px;
+  padding: 30px;
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card-content p {
+  margin-bottom: 15px;
+  font-size: 1rem;
+  color: #424242;
+}
+
+.card-content h5 {
+  margin-top: 20px;
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #212121;
+  font-family: 'San Francisco', Helvetica Neue, Helvetica, Arial, and sans-serif;
+}
+
+.collapsible-header {
+  font-size: 1.3rem;
+  font-weight: bold;
+  border-radius: 15px;
+  color: #212121;
+  padding: 15px 20px;
+}
+
+.collapsible-body {
+  padding: 15px 20px;
+  font-size: 1rem;
+  color: #424242;
+  font-family: 'San Francisco', Helvetica Neue, Helvetica, Arial, and sans-serif;
+}
+
+.collapsible-header:hover {
+  background-color: #eeeeee;
+}
+
+.collapsible-header.active {
+  background-color: #e0e0e0;
+  color: #000;
+}
+
+.collapsible{
+  border-radius: 15px;
 }
