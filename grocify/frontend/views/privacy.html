@@ -49,7 +49,7 @@
                 <!-- 1. Information Collection -->
                 <li>
                 <div class="collapsible-header">
-                    <h5>1. Information Collection</h5>
+                    <h6>1. Information Collection</h6>
                 </div>
                 <div class="collapsible-body">
                     We may collect the following types of information:
@@ -78,7 +78,7 @@
                 <!-- 2. How We Collect Information -->
                 <li>
                     <div class="collapsible-header">
-                        <h5>2. How We Collect Information</h5>
+                        <h6>2. How We Collect Information</h6>
                     </div>
                     <div class="collapsible-body">
                         We collect information in the following ways:
@@ -94,7 +94,7 @@
                 <!-- 3. How We Use Your Information -->
                 <li>
                     <div class="collapsible-header">
-                        <h5>3. How We Use Your Information</h5>
+                        <h6>3. How We Use Your Information</h6>
                     </div>
                     <div class="collapsible-body">
                         We use the information we collect for the following purposes:
@@ -112,7 +112,7 @@
                 <!-- 4. Sharing Your Information -->
                 <li>
                     <div class="collapsible-header">
-                        <h5>4. Sharing Your Information</h5>
+                        <h6>4. Sharing Your Information</h6>
                     </div>
                     <div class="collapsible-body">
                         We do not sell, rent, or trade your personal information. However, we may share your information in the following circumstances:
@@ -128,7 +128,7 @@
                 <!-- 5. Cookies and Tracking Technologies -->
                 <li>
                     <div class="collapsible-header">
-                        <h5>5. Cookies and Tracking Technologies</h5>
+                        <h6>5. Cookies and Tracking Technologies</h6>
                     </div>
                     <div class="collapsible-body">
                         We use cookies and similar technologies to enhance your experience on our website. These may include:
@@ -147,7 +147,7 @@
                 <!-- 6. Data Security -->
                 <li>
                     <div class="collapsible-header">
-                        <h5>6. Data Security</h5>
+                        <h6>6. Data Security</h6>
                     </div>
                     <div class="collapsible-body">
                         We take reasonable steps to protect your personal information from unauthorized access, alteration, disclosure, or destruction. While we strive to use commercially acceptable means to protect your data, please be aware that no method of transmission over the internet or electronic storage is 100% secure.
@@ -156,7 +156,7 @@
                 <!-- 7. Your Rights -->
                 <li>
                     <div class="collapsible-header">
-                        <h5>7. Your Rights</h5>
+                        <h6>7. Your Rights</h6>
                     </div>
                     <div class="collapsible-body">
                         Depending on your location, you may have the following rights regarding your personal information:
@@ -177,7 +177,7 @@
                 <!-- 8. Third-Party Links -->
                 <li>
                     <div class="collapsible-header">
-                        <h5>8. Third-Party Links</h5>
+                        <h6>8. Third-Party Links</h6>
                     </div>
                     <div class="collapsible-body">
                         Our website may contain links to third-party websites that are not operated by us. We are not responsible for the content, privacy policies, or practices of these third-party websites. We encourage you to review the privacy policies of any third-party websites you visit.
@@ -186,7 +186,7 @@
                 <!-- 9. Children’s Privacy -->
                 <li>
                     <div class="collapsible-header">
-                        <h5>9. Children’s Privacy</h5>
+                        <h6>9. Children’s Privacy</h6>
                     </div>
                     <div class="collapsible-body">
                         Our Service is not intended for children under the age of 13. We do not knowingly collect or solicit personal information from children under 13. If we become aware that we have inadvertently collected information from a child under 13, we will take steps to delete such information.
@@ -195,7 +195,7 @@
                 <!-- 10. Third-Party Links -->
                 <li>
                     <div class="collapsible-header">
-                        <h5>10. Third-Party Links</h5>
+                        <h6>10. Third-Party Links</h6>
                     </div>
                     <div class="collapsible-body">
                         We may update our Privacy Policy from time to time. Any changes will be posted on this page with an updated "Effective Date." We encourage you to review this Privacy Policy periodically for any updates.
@@ -204,7 +204,7 @@
                 <!-- 11. Contact Us -->
                 <li>
                     <div class="collapsible-header">
-                        <h5>11. Contact Us</h5>
+                        <h6>11. Contact Us</h6>
                     </div>
                     <div class="collapsible-body">
                         If you have any questions or concerns about this Privacy Policy or our data practices, please contact us at:
@@ -221,7 +221,7 @@
                 <!-- Full version -->
                 <li>
                     <div class="collapsible-header">
-                        <h5>Full PDF Version</h5>
+                        <h6>Full PDF Version</h6>
                     </div>
                     <div class="collapsible-body">
                         Here's the full version of our Privacy Policy in PDF format:
@@ -273,9 +273,12 @@
   <script>
     // Initialize Collapsible
     document.addEventListener('DOMContentLoaded', function () {
-    const elems = document.querySelectorAll('.collapsible');
-    M.Collapsible.init(elems);
+        const elems = document.querySelectorAll('.collapsible');
+        M.Collapsible.init(elems, {
+            accordion: false // Allow multiple sections to be open simultaneously
+        });
     });
+
   </script>
 </body>
 </html>
