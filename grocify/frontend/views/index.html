@@ -17,8 +17,12 @@
   <!-- Navbar -->
   <nav class="white">
     <div class="nav-wrapper container">
-        <a href="index.html" class="brand-logo black-text"><img src="assets/logo.png" alt="Grocify" width="15%"></a>
-        <a href="#" data-target="mobile-menu" class="sidenav-trigger"><i class="material-icons black-text"><i class="material-icons">menu</i></i></a>
+        <!-- Logo Section -->
+        <a href="index.html" class="brand-logo black-text"><img src="assets/logo.png" alt="Grocify" id="nav-logo"></a>
+        <!-- Mobile Menu Icon -->
+        <a href="#" data-target="mobile-menu" class="sidenav-trigger">
+          <i class="material-icons black-text">menu</i>
+        </a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
             <li><a href="/" class="black-text">Home</a></li>
             <li><a href="/#about-us" class="black-text">About Us</a></li>
@@ -28,9 +32,24 @@
             <li><a href="contact.html" class="black-text">Contact</a></li>
             <li><a href="login.html" class="black-text">Log In</a></li>
             <li><a href="register.html" class="btn">Sign Up</a></li>
+            <li><a href="#search-modal" class="modal-trigger black-text"><i class="material-icons">search</i></a></li>
         </ul>
     </div>
   </nav>
+
+  <!-- Search Modal -->
+  <div id="search-modal" class="modal">
+    <div class="modal-content">
+      <h4>Search</h4>
+      <div class="input-field">
+        <input type="text" id="search-input" placeholder="Type your search here...">
+      </div>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="waves-effect waves-green btn-flat modal-close">Close</a>
+      <a href="#!" id="search-btn" class="waves-effect waves-light btn-flat ">Search</a>
+    </div>
+  </div>
 
   <!-- Mobile Menu -->
   <ul class="sidenav" id="mobile-menu">
@@ -41,19 +60,21 @@
     <li><a href="prediction.html" class="black-text">Prediction</a></li>
     <li><a href="contact.html" class="black-text">Contact</a></li>
     <li><a href="register.html" class="black-text">Sign Up</a></li>
+    <li><a href="#search-modal" class="modal-trigger black-text">Search</a></li>
   </ul>
 
   <!-- Hero Section -->
   <div class="hero-section no-pad-bot" id="hero">
     <div class="container">
-      <h1 class="header center text-gradient">Save Big, Shop Smart</h1>
-      <h5 class="center text-gradient">Find the Best Deals on Groceries in Seconds!</h5>
+      <h1 class="header center">Save Big, Shop Smart</h1>
+      <h5 class="center -text">Find the Best Deals on Groceries in Seconds!</h5>
       <br>
       <div class="center">
         <a href="#products" class="btn-large waves-effect waves-light black white-text">Join Now</a>
       </div>
     </div>
   </div>
+
 
   <!-- Products Section -->
   <div class="container" id="products">
@@ -225,13 +246,26 @@
       const elems = document.querySelectorAll('.sidenav');
       M.Sidenav.init(elems);
     });
+  </script>
 
-    // Dark Mode Toggle
-    const darkModeToggle = document.getElementById('dark-mode-toggle');
-    darkModeToggle.addEventListener('click', (event) => {
-      event.preventDefault();
-      document.body.classList.toggle('dark-mode');
-      darkModeToggle.textContent = document.body.classList.contains('dark-mode') ? 'Light Mode' : 'Dark Mode';
+  <script>
+    // Initialize Modals
+    document.addEventListener('DOMContentLoaded', function () {
+      const modals = document.querySelectorAll('.modal');
+      M.Modal.init(modals);
+    });
+  </script>
+
+  <script>
+    // Search Functionality
+    document.getElementById('search-btn').addEventListener('click', function () {
+      const query = document.getElementById('search-input').value.trim();
+      if (query) {
+        console.log(`Search for: ${query}`); // Replace with actual search logic
+        alert(`You searched for: "${query}"`);
+      } else {
+        alert('Please enter a search term.');
+      }
     });
   </script>
 
