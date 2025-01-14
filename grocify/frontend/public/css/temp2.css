@@ -11,17 +11,50 @@ body {
     background-color: white;
   }
 
-  #hero {
-    /* background: url(public/assets/background_image_2.jpeg) no-repeat center center; */
-    /* background: linear-gradient(45deg, HSLA(215, 62%, 44%, 1), #F62D51); */
-    background-size: cover;
-    padding: 150px 0;
-  }
-  
-  #hero h1 {
-    font-size: 4rem;
-    font-weight: bold;
-  }
+
+  /* Hero Section with Background Image */
+#hero {
+  /* background: url() no-repeat center center; Replace with your image URL */
+  background-size: cover; /* Ensures the image covers the entire section */
+  background-attachment: fixed; /* Optional: Creates a parallax effect */
+  padding: 150px 0; /* Adjust padding for content spacing */
+  color: white; /* Ensures text is readable over the image */
+  text-align: center;
+}
+
+#hero h1 {
+  font-size: 4rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+#hero h5 {
+  font-size: 1.5rem;
+  margin-bottom: 30px;
+}
+
+#hero {
+  position: relative;
+}
+
+#hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  background: url('https://images.unsplash.com/photo-1628102491629-778571d893a3?q=80&w=3560&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center; /* Replace with your image URL */
+  background-size: cover;
+  mask-image: linear-gradient(transparent, #f9f9f9); /* Creates a gradient mask */
+}
+
+#hero .container {
+  position: relative;
+  z-index: 2; /* Ensures text appears above the overlay */
+}
+
   
   #products h4 {
     margin-bottom: 2rem;
@@ -52,6 +85,19 @@ nav .nav-wrapper a {
     font-size: 2rem; /* Increase menu icon size */
     cursor: pointer;
 }  
+
+/* Navbar Logo */
+#nav-logo {
+  height: 65px; /* Adjust to match your preferred size */
+  width: auto;
+  margin-top: 5px; /* Optional: Fine-tune vertical alignment */
+}
+
+/* Ensure alignment with navigation links */
+.nav-wrapper .brand-logo {
+  display: flex;
+  align-items: center;
+}
 
 /* Pill-style buttons */
 .btn-large {
@@ -315,4 +361,72 @@ nav .nav-wrapper a {
 
 .collapsible{
   border-radius: 15px;
+}
+
+/* Modal Styling */
+.modal {
+  max-width: 500px;
+  border-radius: 10px;
+}
+
+.modal-content {
+  padding: 20px;
+}
+
+.modal-content h4 {
+  margin-bottom: 20px;
+  font-size: 1.8rem;
+}
+
+#search-input {
+  border-bottom: 2px solid #000;
+}
+
+#search-input:focus {
+  border-bottom: 2px solid #f57c00;
+  box-shadow: none;
+}
+
+.profile-page {
+  margin-top: 30px;
+}
+
+.profile-picture {
+  position: relative;
+}
+
+.profile-picture img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 15px;
+}
+
+/* Section Headers */
+.section h5 {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+/* Form Inputs */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="password"] {
+  border-bottom: 2px solid #000;
+}
+
+input:focus {
+  border-bottom: 2px solid #f57c00;
+  box-shadow: none;
+}
+
+/* Buttons */
+.btn {
+  background-color: #f57c00;
+}
+
+.btn:hover {
+  background-color: #e65100;
 }
