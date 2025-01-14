@@ -423,10 +423,10 @@ input:focus {
 }
 
 /* Buttons */
-.btn {
+.profile-btn {
   background-color: #f57c00;
 }
 
-.btn:hover {
+.profile-btn:hover {
   background-color: #e65100;
 }
