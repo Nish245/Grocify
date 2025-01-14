@@ -422,11 +422,17 @@ input:focus {
   box-shadow: none;
 }
 
-/* Buttons */
-.profile-btn {
-  background-color: #f57c00;
+/* Profile Buttons */
+.btn-profile {
+  background-color: #f57c00; /* Change background to red on hover */
+  border-radius: 50px; /* Rounded corners for pill shape */
+  padding: 0 30px; /* Extra horizontal padding */
+  font-size: 1.2rem; /* Adjust font size */
+  text-transform: none; /* Remove uppercase styling */
+  transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effects */
 }
 
-.profile-btn:hover {
+.btn-profile:hover {
   background-color: #e65100;
+  color: red; /* Ensure text is visible on the red background */
 }
