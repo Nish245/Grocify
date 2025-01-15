@@ -436,3 +436,100 @@ input:focus {
   background-color: #e65100;
   color: red; /* Ensure text is visible on the red background */
 }
+
+/* fruits Card Styling */
+.fruits-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  /* Fixed Size */
+height: 340px; /* Set a uniform height for all cards */
+display: flex;
+flex-direction: column;
+justify-content: space-between; /* Ensures content is spaced evenly */
+align-items: center; /* Center-aligns the content horizontally */
+}
+
+.fruits-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+/* Card Image */
+.fruits-card-image {
+  position: relative;
+  overflow: hidden;
+}
+
+.fruits-card-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.fruits-card:hover .fruits-card-image img {
+  transform: scale(1.1); /* Zoom effect on hover */
+}
+
+/* Title Inside Image - Centered */
+.fruits-card-title-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+  z-index: 2;
+  transition: opacity 0.3s ease;
+}
+
+/* Hide Title on Hover */
+.fruits-card:hover .fruits-card-title-overlay {
+  opacity: 0;
+}
+
+/* Overlay Effect */
+.fruits-card-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
+  color: white;
+  padding: 20px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.fruits-card:hover .fruits-card-overlay {
+  opacity: 1; /* Show overlay on hover */
+}
+
+/* Overlay Content */
+.fruits-card-overlay p {
+  font-size: 1rem;
+  margin-bottom: 20px;
+}
+
+.fruits-card-overlay .fruits-btn {
+  font-weight: bold;
+  background-color: white; /* Change background to red on hover */
+  border-radius: 50px; /* Rounded corners for pill shape */
+  padding: 0 30px; /* Extra horizontal padding */
+  font-size: 1.2rem; /* Adjust font size */
+  text-transform: none; /* Remove uppercase styling */
+  transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effects */
+  color: black;
+}
+
+.fruits-card-overlay .fruits-btn:hover {
+  background-color: red;
+  color: white;
+}
