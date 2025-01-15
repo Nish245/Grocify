@@ -446,7 +446,7 @@ input:focus {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 
   /* Fixed Size */
-height: 340px; /* Set a uniform height for all cards */
+height: 250px; /* Set a uniform height for all cards */
 display: flex;
 flex-direction: column;
 justify-content: space-between; /* Ensures content is spaced evenly */
