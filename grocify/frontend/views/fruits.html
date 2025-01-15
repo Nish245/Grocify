@@ -70,10 +70,10 @@
       <!-- Filter Sidebar -->
       <div class="col s12 m3">
         <div id="filter-sidebar">
-          <h5>Filter Products</h5>
+          <h5 class="text-gradient">Filter Products</h5>
           
           <!-- Filter by Category -->
-          <h6>Categories</h6>
+          <h6 class="text-gradient">Categories</h6>
           <p>
             <label>
               <input type="checkbox" class="category-filter" value="Apple" />
@@ -95,7 +95,7 @@
           <p>
             <label>
               <input type="checkbox" class="category-filter" value="Kiwi" />
-              <span>Kiwis</span>
+              <span>Kiwi</span>
             </label>
           </p>
 
@@ -214,6 +214,7 @@
         { name: 'Banana', price: 5, category: 'Banana', description: 'Fresh Bananas from Ecuador'},
         { name: 'Orange', price: 8, category: 'Orange', description: 'Fresh Oranges from Florida'},
         { name: 'Kiwi', price: 15, category: 'Kiwi', description: 'Fresh Kiwi from New Zealand'},
+        { name: 'Kiwi', price: 10, category: 'Kiwi', description: 'Fresh Kiwi from Australia'},
       ];
 
       const filteredProducts = allProducts.filter((product) => {
@@ -232,24 +233,24 @@
       productList.innerHTML = products
         .map(
           (product) => `
-        <div class="col s12 m6 l3">
-          <div class="fruits-card">
-            <div class="fruits-card-image">
-              <img src="assets/${product.name.toLowerCase()}.jpg" alt="${product.name}">
-              <div class="fruits-card-title-overlay">
-                <h5>${product.name}</h5>
-              </div>
-              <div class="fruits-card-overlay">
-                <h5 class="left-align">${product.name}</h5>
-                <p>${product.description}</p>
-                <p>Price: $${product.price}</p>
-                <div class="center">
-                  <a href="#" class="btn" onclick="addToCart('${product.name}')">Add to Cart</a>
+            <div class="col s12 m6 l3">
+              <div class="fruits-card">
+                <div class="fruits-card-image">
+                  <img src="assets/${product.name.toLowerCase()}.jpg" alt="${product.name}">
+                  <div class="fruits-card-title-overlay">
+                    <h5>${product.name}</h5>
+                  </div>
+                  <div class="fruits-card-overlay">
+                    <h5 class="left-align">${product.name}</h5>
+                    <p>${product.description}</p>
+                    <p>Price: $${product.price}</p>
+                    <div class="center">
+                      <a href="#" class="btn" onclick="addToCart('${product.name}')">Add to Cart</a>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-          </div>
-        </div>`
+            </div>`
         )
         .join('');
     }
