@@ -64,99 +64,61 @@
     <li><a href="#search-modal" class="modal-trigger black-text">Search</a></li>
   </ul>
 
+  <div class="hero-section">
+    <!-- Add a container for the layout -->
+    <div class="container row">
+      <!-- Filter Sidebar -->
+      <div class="col s12 m3">
+        <div id="filter-sidebar">
+          <h5>Filter Products</h5>
+          
+          <!-- Filter by Category -->
+          <h6>Categories</h6>
+          <p>
+            <label>
+              <input type="checkbox" class="category-filter" value="Apple" />
+              <span>Apples</span>
+            </label>
+          </p>
+          <p>
+            <label>
+              <input type="checkbox" class="category-filter" value="Banana" />
+              <span>Bananas</span>
+            </label>
+          </p>
+          <p>
+            <label>
+              <input type="checkbox" class="category-filter" value="Orange" />
+              <span>Oranges</span>
+            </label>
+          </p>
+          <p>
+            <label>
+              <input type="checkbox" class="category-filter" value="Kiwi" />
+              <span>Kiwis</span>
+            </label>
+          </p>
 
-  <!-- Products Section -->
-   <div class="hero-section">
-        <div class="container" id="products">
-            <h4 class="center text-gradient">Our Products</h4>
-            <div class="row">
-            <!-- Fruits 1 -->
-            <div class="col s12 m6 l3">
-              <div class="fruits-card">
-                <!-- Card Image with Overlay -->
-                <div class="fruits-card-image">
-                  <img src="assets/apple.jpg" alt="Apples">
-                  <!-- Always Centered Title -->
-                  <div class="fruits-card-title-overlay">
-                    <h5>Apples</h5>
-                  </div>
-                  <!-- Hover Overlay Content -->
-                  <div class="fruits-card-overlay">
-                    <h5 class="left-align">Apples</h5>
-                    <p>Fresh and delicious apple</p>
-                    <div class="center">
-                      <a href="#" class="btn" onclick="addToCart('Apple')">Add to Cart</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- Fruits 2 -->
-            <div class="col s12 m6 l3">
-              <div class="fruits-card">
-                <!-- Card Image with Overlay -->
-                <div class="fruits-card-image">
-                  <img src="assets/banana.jpg" alt="Banana">
-                  <!-- Always Centered Title -->
-                  <div class="fruits-card-title-overlay">
-                    <h5>Banana</h5>
-                  </div>
-                  <!-- Hover Overlay Content -->
-                  <div class="fruits-card-overlay">
-                    <h5 class="left-align">Banana</h5>
-                    <p>Fresh Bananas</p>
-                    <div class="center">
-                      <a href="#" class="btn" onclick="addToCart('Banana')">Add to Cart</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- Fruits 3 -->
-            <div class="col s12 m6 l3">
-              <div class="fruits-card">
-                <!-- Card Image with Overlay -->
-                <div class="fruits-card-image">
-                  <img src="assets/orange.jpg" alt="Orange">
-                  <!-- Always Centered Title -->
-                  <div class="fruits-card-title-overlay">
-                    <h5>Orange</h5>
-                  </div>
-                  <!-- Hover Overlay Content -->
-                  <div class="fruits-card-overlay">
-                    <h5 class="left-align">Orange</h5>
-                    <p>Fresh oranges for your juice</p>
-                    <div class="center">
-                      <a href="#" class="btn" onclick="addToCart('Orange')">Add to Cart</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- Fruits 4 -->
-            <div class="col s12 m6 l3">
-              <div class="fruits-card">
-                <!-- Card Image with Overlay -->
-                <div class="fruits-card-image">
-                  <img src="assets/kiwi.jpg" alt="Kiwi">
-                  <!-- Always Centered Title -->
-                  <div class="fruits-card-title-overlay">
-                    <h5>Kiwi</h5>
-                  </div>
-                  <!-- Hover Overlay Content -->
-                  <div class="fruits-card-overlay">
-                    <h5 class="left-align">Kiwi</h5>
-                    <p>Fresh Kiwie</p>
-                    <div class="center">
-                      <a href="#" class="btn" onclick="addToCart('Kiwi')">Add to Cart</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+          <!-- Filter by Price -->
+          <h6>Price Range</h6>
+          <div class="input-field">
+            <input type="range" id="price-filter" min="0" max="50" step="5" />
+            <span id="price-display">Up to $50</span>
           </div>
         </div>
+      </div>
+
+      <!-- Products Section -->
+      <div class="col s12 m9">
+        <div id="products">
+          <h4 class="center text-gradient">Our Fruits Products</h4>
+          <div class="row" id="product-list">
+            <!-- Existing Product Cards (Unchanged) -->
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 
   <!-- Footer -->
   <footer class="page-footer black">
@@ -219,6 +181,82 @@
         // Save the updated cart back to localStorage
         localStorage.setItem('cart', JSON.stringify(cart));
     }
+  </script>
+
+  <!-- JavaScript -->
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const categoryFilters = document.querySelectorAll('.category-filter');
+    const priceFilter = document.getElementById('price-filter');
+    const priceDisplay = document.getElementById('price-display');
+    const productList = document.getElementById('product-list');
+
+    // Update price display dynamically
+    priceFilter.addEventListener('input', () => {
+      priceDisplay.textContent = `Up to $${priceFilter.value}`;
+      filterProducts();
+    });
+
+    // Filter products when a checkbox is clicked
+    categoryFilters.forEach((checkbox) => {
+      checkbox.addEventListener('change', filterProducts);
+    });
+
+    function filterProducts() {
+      const selectedCategories = Array.from(categoryFilters)
+        .filter((checkbox) => checkbox.checked)
+        .map((checkbox) => checkbox.value);
+      const maxPrice = parseInt(priceFilter.value, 10);
+
+      // Filter logic (mock data used as example)
+      const allProducts = [
+        { name: 'Apple', price: 10, category: 'Apple',  description: 'Fresh Apples from Washington'},
+        { name: 'Banana', price: 5, category: 'Banana', description: 'Fresh Bananas from Ecuador'},
+        { name: 'Orange', price: 8, category: 'Orange', description: 'Fresh Oranges from Florida'},
+        { name: 'Kiwi', price: 15, category: 'Kiwi', description: 'Fresh Kiwi from New Zealand'},
+      ];
+
+      const filteredProducts = allProducts.filter((product) => {
+        const matchesCategory =
+          selectedCategories.length === 0 ||
+          selectedCategories.includes(product.category);
+        const matchesPrice = product.price <= maxPrice;
+        return matchesCategory && matchesPrice;
+      });
+
+      // Update UI
+      renderProducts(filteredProducts);
+    }
+
+    function renderProducts(products) {
+      productList.innerHTML = products
+        .map(
+          (product) => `
+        <div class="col s12 m6 l3">
+          <div class="fruits-card">
+            <div class="fruits-card-image">
+              <img src="assets/${product.name.toLowerCase()}.jpg" alt="${product.name}">
+              <div class="fruits-card-title-overlay">
+                <h5>${product.name}</h5>
+              </div>
+              <div class="fruits-card-overlay">
+                <h5 class="left-align">${product.name}</h5>
+                <p>${product.description}</p>
+                <p>Price: $${product.price}</p>
+                <div class="center">
+                  <a href="#" class="btn" onclick="addToCart('${product.name}')">Add to Cart</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>`
+        )
+        .join('');
+    }
+
+    // Initial render
+    filterProducts();
+  });
   </script>
 
 </body>
