@@ -64,6 +64,33 @@
     <li><a href="#search-modal" class="modal-trigger black-text">Search</a></li>
   </ul>
 
+  <!-- Add Modal -->
+  <div id="add-modal" class="modal">
+    <div class="modal-content">
+      <h4 class="center">Add a New Fruit</h4>
+      <! -- Add a form to add a new fruit -->
+      <form id="add-fruit-form">
+        <div class="input-field">
+          <input id="fruit-name" type="text" required>
+          <label for="fruit-name">Fruit Name</label>
+        </div>
+        <div class="input-field">
+          <textarea id="fruit-description" class="materialize-textarea" required></textarea>
+          <label for="fruit-description">Description</label>
+        </div>
+        <div class="input-field">
+          <input id="fruit-price" type="number" min="1" required>
+          <label for="fruit-price">Price</label>
+        </div>
+        <div class="input-field">
+          <input id="fruit-image" type="text" required>
+          <label for="fruit-image">Image name</label>
+        </div>
+        <button class="btn waves-effect waves-light" type="submit">Add Fruit</button>
+      </form>
+    </div>
+  </div>
+
   <div class="hero-section">
     <!-- Add a container for the layout -->
     <div class="container row">
@@ -111,7 +138,8 @@
       <!-- Products Section -->
       <div class="col s12 m9">
         <div id="products">
-          <h4 class="center text-gradient">Our Fruits Products</h4>
+            <h4 class="center text-gradient">Our Fruits Products</h4>
+            <a href="#add-modal" class="modal-trigger black-text"><i class="material-icons">add</i></a>
           <div class="row" id="product-list">
             <!-- Existing Product Cards (Unchanged) -->
           </div>
@@ -124,7 +152,7 @@
   <footer class="page-footer black">
     <div class="container">
       <div class="row">
-        <div class="col s12">
+        <div class="col s12 m6">
           <h5 class="white-text"></h5>
             <a href="/ ">Home</a>
             <span class="mx-1">&middot;</span>
@@ -183,7 +211,7 @@
     }
   </script>
 
-  <!-- JavaScript -->
+  <!-- filer function -->
 <script>
   document.addEventListener('DOMContentLoaded', () => {
     const categoryFilters = document.querySelectorAll('.category-filter');
@@ -258,6 +286,57 @@
     // Initial render
     filterProducts();
   });
+  </script>
+
+  <script>
+    // Add Fruit Script
+    document.addEventListener('DOMContentLoaded', () => {
+      const productList = document.getElementById('product-list');
+      const addFruitForm = document.getElementById('add-fruit-form');
+
+      // Function to render a product
+      const renderProduct = (product) => {
+        const productCard = document.createElement('div');
+        productCard.className = 'col s12 m6 l3';
+        productCard.innerHTML = `
+              <div class="fruits-card">
+                <div class="fruits-card-image">
+                  <img src="assets/${product.name.toLowerCase()}.jpg" alt="${product.name}">
+                  <div class="fruits-card-title-overlay">
+                    <h5>${product.name}</h5>
+                  </div>
+                  <div class="fruits-card-overlay">
+                    <h5 class="left-align">${product.name}</h5>
+                    <p>${product.description}</p>
+                    <p>Price: $${product.price}</p>
+                    <div class="center">
+                      <a href="#" class="btn" onclick="addToCart('${product.name}')">Add to Cart</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+        `
+        productList.appendChild(productCard);
+      };
+
+      // Handle form submission
+      addFruitForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const name = document.getElementById('fruit-name').value;
+        const description = document.getElementById('fruit-description').value;
+        const price = document.getElementById('fruit-price').value;
+        const image = document.getElementById('fruit-image').value;
+
+        const newFruit = { name, description, price, image };
+        renderProduct(newFruit);
+
+        // Reset form fields
+        addFruitForm.reset();
+        M.toast({ html: `${name} has been added!` });
+        console.log('New fruit added:', newFruit);
+      });
+    });
   </script>
 
 </body>
