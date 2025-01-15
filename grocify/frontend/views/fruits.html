@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fruits | Grocify</title>
+  <!-- Favicon-->
+  <link rel="icon" type="image/x-icon" href="assets/icons.png" />
+  <!-- Materialize CSS Framework -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/temp2.css">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="white">
+    <div class="nav-wrapper container">
+        <!-- Logo Section -->
+        <a href="index.html" class="brand-logo black-text"><img src="assets/logo.png" alt="Grocify" id="nav-logo"></a>
+        <!-- Mobile Menu Icon -->
+        <a href="#" data-target="mobile-menu" class="sidenav-trigger">
+          <i class="material-icons black-text">menu</i>
+        </a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a href="/" class="black-text">Home</a></li>
+            <li><a href="/#about-us" class="black-text">About Us</a></li>
+            <li><a href="pricecheck.html" class="black-text">Price Check</a></li>
+            <li><a href="recommendation.html" class="black-text">Recommendation</a></li>
+            <li><a href="prediction.html" class="black-text">Prediction</a></li>
+            <li><a href="contact.html" class="black-text">Contact</a></li>
+            <li><a href="login.html" class="black-text">Log In</a></li>
+            <li><a href="register.html" class="btn">Sign Up</a></li>
+            <li><a href="#search-modal" class="modal-trigger black-text"><i class="material-icons">search</i></a></li>
+            <li><a href="cart.html" class="black-text"><i class="material-icons">shopping_cart</i></a></li>
+        </ul>
+    </div>
+  </nav>
+
+  <!-- Search Modal -->
+  <div id="search-modal" class="modal">
+    <div class="modal-content">
+      <h4>Search</h4>
+      <div class="input-field">
+        <input type="text" id="search-input" placeholder="Type your search here...">
+      </div>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="waves-effect waves-green btn-flat modal-close">Close</a>
+      <a href="#!" id="search-btn" class="waves-effect waves-light btn-flat ">Search</a>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <ul class="sidenav" id="mobile-menu">
+    <li><a href="/ " class="black-text">Home</a></li>
+    <li><a href="#about-us" class="black-text">About Us</a></li>
+    <li><a href="pricecheck.html" class="black-text">Price Check</a></li>
+    <li><a href="recommendation.html" class="black-text">Recommendation</a></li>
+    <li><a href="prediction.html" class="black-text">Prediction</a></li>
+    <li><a href="contact.html" class="black-text">Contact</a></li>
+    <li><a href="register.html" class="black-text">Sign Up</a></li>
+    <li><a href="#search-modal" class="modal-trigger black-text">Search</a></li>
+  </ul>
+
+
+  <!-- Products Section -->
+   <div class="hero-section">
+        <div class="container" id="products">
+            <h4 class="center text-gradient">Our Products</h4>
+            <div class="row">
+            <!-- Fruits 1 -->
+            <div class="col s12 m6 l3">
+              <div class="fruits-card">
+                <!-- Card Image with Overlay -->
+                <div class="fruits-card-image">
+                  <img src="assets/apple.jpg" alt="Apples">
+                  <!-- Always Centered Title -->
+                  <div class="fruits-card-title-overlay">
+                    <h5>Apples</h5>
+                  </div>
+                  <!-- Hover Overlay Content -->
+                  <div class="fruits-card-overlay">
+                    <h5 class="left-algin">Apples</h5>
+                    <p>Fresh and delicious apple</p>
+                    <div class="center">
+                      <a href="#" class="btn" onclick="addToCart('Apple')">Add to Cart</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Fruits 2 -->
+            <div class="col s12 m6 l3">
+              <div class="fruits-card">
+                <!-- Card Image with Overlay -->
+                <div class="fruits-card-image">
+                  <img src="assets/banana.jpg" alt="Banana">
+                  <!-- Always Centered Title -->
+                  <div class="fruits-card-title-overlay">
+                    <h5>Banana</h5>
+                  </div>
+                  <!-- Hover Overlay Content -->
+                  <div class="fruits-card-overlay">
+                    <h5 class="left-algin">Banana</h5>
+                    <p>Fresh Bananas</p>
+                    <div class="center">
+                      <a href="#" class="btn" onclick="addToCart('Banana')">Add to Cart</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Fruits 3 -->
+            <div class="col s12 m6 l3">
+              <div class="fruits-card">
+                <!-- Card Image with Overlay -->
+                <div class="fruits-card-image">
+                  <img src="assets/orange.jpg" alt="Orange">
+                  <!-- Always Centered Title -->
+                  <div class="fruits-card-title-overlay">
+                    <h5>Orange</h5>
+                  </div>
+                  <!-- Hover Overlay Content -->
+                  <div class="fruits-card-overlay">
+                    <h5 class="left-algin">Orange</h5>
+                    <p>Fresh oranges for your juice</p>
+                    <div class="center">
+                      <a href="#" class="btn" onclick="addToCart('Orange')">Add to Cart</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Fruits 4 -->
+            <div class="col s12 m6 l3">
+              <div class="fruits-card">
+                <!-- Card Image with Overlay -->
+                <div class="fruits-card-image">
+                  <img src="assets/kiwi.jpg" alt="Kiwi">
+                  <!-- Always Centered Title -->
+                  <div class="fruits-card-title-overlay">
+                    <h5>Kiwi</h5>
+                  </div>
+                  <!-- Hover Overlay Content -->
+                  <div class="fruits-card-overlay">
+                    <h5 class="left-algin">Kiwi</h5>
+                    <p>Fresh Kiwie</p>
+                    <div class="center">
+                      <a href="#" class="btn" onclick="addToCart('Kiwi')">Add to Cart</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+
+  <!-- Footer -->
+  <footer class="page-footer black">
+    <div class="container">
+      <div class="row">
+        <div class="col s12">
+          <h5 class="white-text"></h5>
+            <a href="/ ">Home</a>
+            <span class="mx-1">&middot;</span>
+            <a href="/#about-us">About Us</a>
+            <span class="mx-1">&middot;</span>
+            <a class="small" href="privacy.html">Privacy</a>
+            <span class="mx-1">&middot;</span>
+            <a class="small" href="termsofuse.html">Terms</a>
+            <span class="mx-1">&middot;</span>
+            <a class="small" href="contact.html">Contact</a>
+            <p class="grey-text text-lighten-4">© <script>document.write(/\d{4}/.exec(Date())[0])</script> Grocify. All rights reserved.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Materialize JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <!-- Custom JS -->
+  <script>
+    // Initialize Mobile Sidenav
+    document.addEventListener('DOMContentLoaded', function () {
+      const elems = document.querySelectorAll('.sidenav');
+      M.Sidenav.init(elems);
+    });
+  </script>
+
+  <script>
+    // Initialize Modals
+    document.addEventListener('DOMContentLoaded', function () {
+      const modals = document.querySelectorAll('.modal');
+      M.Modal.init(modals);
+    });
+  </script>
+
+  <script>
+    // Search Functionality
+    document.getElementById('search-btn').addEventListener('click', function () {
+      const query = document.getElementById('search-input').value.trim();
+      if (query) {
+        console.log(`Search for: ${query}`); // Replace with actual search logic
+        alert(`You searched for: "${query}"`);
+      } else {
+        alert('Please enter a search term.');
+      }
+    });
+  </script>
+  <script>
+    function addToCart(productName) {
+        // Get the current cart items from localStorage or initialize it as an empty array
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        // Add the new product to the cart
+        cart.push(productName);
+        // Save the updated cart back to localStorage
+        localStorage.setItem('cart', JSON.stringify(cart));
+    }
+  </script>
+
+</body>
+</html>
