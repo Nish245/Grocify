@@ -444,13 +444,14 @@ input:focus {
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin: 16px 0px 0px 0px;
 
   /* Fixed Size */
-height: 250px; /* Set a uniform height for all cards */
-display: flex;
-flex-direction: column;
-justify-content: space-between; /* Ensures content is spaced evenly */
-align-items: center; /* Center-aligns the content horizontally */
+  height: 250px; /* Set a uniform height for all cards */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Ensures content is spaced evenly */
+  align-items: center; /* Center-aligns the content horizontally */
 }
 
 .fruits-card:hover {
