@@ -67,7 +67,7 @@
   <div id="add-modal" class="modal">
     <div class="modal-content">
       <h4 class="center">Add a New Milk</h4>
-      <! -- Add a form to add a new Milk -->
+      <!-- Add a form to add a new Milk -->
       <form id="add-milk-form">
         <div class="input-field">
           <input id="milk-name" type="text" required>
@@ -75,22 +75,22 @@
         </div>
         <!-- Dropdown for category -->
         <div class="input-field">
-            <select id="milk-category" required>
-                <option value="" disabled selected>Choose a category</option>
-                <option value="Bread">Bread</option>
-                <option value="Juice">Juice</option>
-                <option value="Muffin">Muffin</option>
-                <option value="Pie">Pie</option>
-                <option value="Salad">Salad</option>
-                <option value="Smoothie">Smoothie</option>
-                <option value="Sorbet">Sorbet</option>
-                <option value="Toast">Toast</option>
-            </select>
-            <label for="milk-category">Category</label>
+          <select id="milk-category" required>
+              <option value="" disabled selected>Choose a category</option>
+              <option value="Bread">Bread</option>
+              <option value="Juice">Juice</option>
+              <option value="Muffin">Muffin</option>
+              <option value="Pie">Pie</option>
+              <option value="Salad">Salad</option>
+              <option value="Smoothie">Smoothie</option>
+              <option value="Sorbet">Sorbet</option>
+              <option value="Toast">Toast</option>
+          </select>
+          <label for="milk-category">Category</label>
         </div>
         <div class="input-field">
           <textarea id="milk-description" class="materialize-textarea" required></textarea>
-          <label for="milk-description">Description</label>
+          <label for="milk-description">Description</label> 
         </div>
         <div class="input-field">
           <input id="milk-price" type="number" min="1" required>
@@ -99,12 +99,15 @@
         <div class="input-field">
             <input id="milk-size" type="number" min="1" required>
             <label for="milk-size">Size (in L)</label>
-          </div>
+        </div>
         <div class="input-field">
           <input id="milk-image" type="text" required>
           <label for="milk-image">Image name</label>
         </div>
-        <button class="btn waves-effect waves-light" type="submit">Add Milks</button>
+        <div class="modal-footer">
+          <a href="#!" class="waves-effect waves-green btn-flat modal-close">Close</a>
+          <button class="btn waves-effect waves-light" type="submit">Add Milks</button>
+        </div>
       </form>
     </div>
   </div>
@@ -427,6 +430,14 @@
         M.toast({ html: `${name} has been added!` });
         console.log('New Milk added:', newMilk);
       });
+    });
+  </script>
+
+  // Add Milks Model Initialization
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const elems = document.querySelectorAll('select');
+        M.FormSelect.init(elems);
     });
   </script>
 
