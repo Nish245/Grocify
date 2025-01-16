@@ -437,8 +437,8 @@ input:focus {
   color: red; /* Ensure text is visible on the red background */
 }
 
-/* fruits Card Styling */
-.fruits-card {
+/* Product Card Styling */
+.product-card {
   position: relative;
   overflow: hidden;
   border-radius: 10px;
@@ -454,30 +454,30 @@ input:focus {
   align-items: center; /* Center-aligns the content horizontally */
 }
 
-.fruits-card:hover {
+.product-card:hover {
   transform: scale(1.05);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
 }
 
 /* Card Image */
-.fruits-card-image {
+.product-card-image {
   position: relative;
   overflow: hidden;
 }
 
-.fruits-card-image img {
+.product-card-image img {
   width: 100%;
   height: auto;
   display: block;
   transition: transform 0.3s ease;
 }
 
-.fruits-card:hover .fruits-card-image img {
+.product-card:hover .product-card-image img {
   transform: scale(1.1); /* Zoom effect on hover */
 }
 
 /* Title Inside Image - Centered */
-.fruits-card-title-overlay {
+.product-card-title-overlay {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -492,12 +492,12 @@ input:focus {
 }
 
 /* Hide Title on Hover */
-.fruits-card:hover .fruits-card-title-overlay {
+.product-card:hover .product-card-title-overlay {
   opacity: 0;
 }
 
 /* Overlay Effect */
-.fruits-card-overlay {
+.product-card-overlay {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -509,17 +509,17 @@ input:focus {
   transition: opacity 0.3s ease;
 }
 
-.fruits-card:hover .fruits-card-overlay {
+.product-card:hover .product-card-overlay {
   opacity: 1; /* Show overlay on hover */
 }
 
 /* Overlay Content */
-.fruits-card-overlay p {
+.product-card-overlay p {
   font-size: 1rem;
   margin-bottom: 20px;
 }
 
-.fruits-card-overlay .fruits-btn {
+.product-card-overlay .product-btn {
   font-weight: bold;
   background-color: white; /* Change background to red on hover */
   border-radius: 50px; /* Rounded corners for pill shape */
@@ -530,7 +530,64 @@ input:focus {
   color: black;
 }
 
-.fruits-card-overlay .fruits-btn:hover {
+.product-card-overlay .product-btn:hover {
   background-color: red;
   color: white;
+}
+
+/* Payment Styling */
+.payment-container {
+  max-width: 500px;
+  background: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+}
+
+.payment-input-field {
+  margin-bottom: 20px;
+}
+
+.payment-card-number-wrapper {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+#card-number {
+  flex: 1;
+}
+
+#generate-random {
+  background: #eee;
+  border: none;
+  border-radius: 4px;
+  padding: 6px 12px;
+  font-size: 12px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.card-company-icon {
+  width: 50px;
+  height: 30px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin-left: 10px;
+}
+
+.visa-icon {
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/4/41/Visa_Logo.png');
+}
+
+.mastercard-icon {
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg');
+}
+
+.amex-icon {
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/3/30/American_Express_logo.svg');
+}
+
+.default-icon {
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/3/39/Credit-card.svg');
 }
