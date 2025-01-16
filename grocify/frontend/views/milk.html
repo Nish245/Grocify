@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Milks | Grocify</title>
+  <!-- Favicon-->
+  <link rel="icon" type="image/x-icon" href="assets/icons.png" />
+  <!-- Materialize CSS Framework -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/temp2.css">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="white">
+    <div class="nav-wrapper container">
+        <!-- Logo Section -->
+        <a href="index.html" class="brand-logo black-text"><img src="assets/logo.png" alt="Grocify" id="nav-logo"></a>
+        <!-- Mobile Menu Icon -->
+        <a href="#" data-target="mobile-menu" class="sidenav-trigger">
+          <i class="material-icons black-text">menu</i>
+        </a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a href="/" class="black-text">Home</a></li>
+            <li><a href="/#about-us" class="black-text">About Us</a></li>
+            <li><a href="pricecheck.html" class="black-text">Price Check</a></li>
+            <li><a href="recommendation.html" class="black-text">Recommendation</a></li>
+            <li><a href="prediction.html" class="black-text">Prediction</a></li>
+            <li><a href="login.html" class="black-text">Log In</a></li>
+            <li><a href="register.html" class="btn">Sign Up</a></li>
+            <li><a href="#search-modal" class="modal-trigger black-text"><i class="material-icons">search</i></a></li>
+            <li><a href="cart.html" class="black-text"><i class="material-icons">shopping_cart</i></a></li>
+        </ul>
+    </div>
+  </nav>
+
+  <!-- Search Modal -->
+  <div id="search-modal" class="modal">
+    <div class="modal-content">
+      <h4>Search</h4>
+      <div class="input-field">
+        <input type="text" id="search-input" placeholder="Type your search here...">
+      </div>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="waves-effect waves-green btn-flat modal-close">Close</a>
+      <a href="#!" id="search-btn" class="waves-effect waves-light btn-flat ">Search</a>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <ul class="sidenav" id="mobile-menu">
+    <li><a href="/ " class="black-text">Home</a></li>
+    <li><a href="#about-us" class="black-text">About Us</a></li>
+    <li><a href="pricecheck.html" class="black-text">Price Check</a></li>
+    <li><a href="recommendation.html" class="black-text">Recommendation</a></li>
+    <li><a href="prediction.html" class="black-text">Prediction</a></li>
+    <li><a href="contact.html" class="black-text">Contact</a></li>
+    <li><a href="register.html" class="black-text">Sign Up</a></li>
+    <li><a href="#search-modal" class="modal-trigger black-text">Search</a></li>
+  </ul>
+
+  <!-- Add Modal -->
+  <div id="add-modal" class="modal">
+    <div class="modal-content">
+      <h4 class="center">Add a New Milk</h4>
+      <! -- Add a form to add a new Milk -->
+      <form id="add-milk-form">
+        <div class="input-field">
+          <input id="milk-name" type="text" required>
+          <label for="milk-name">Milk Name</label>
+        </div>
+        <!-- Dropdown for category -->
+        <div class="input-field">
+            <select id="milk-category" required>
+                <option value="" disabled selected>Choose a category</option>
+                <option value="Bread">Bread</option>
+                <option value="Juice">Juice</option>
+                <option value="Muffin">Muffin</option>
+                <option value="Pie">Pie</option>
+                <option value="Salad">Salad</option>
+                <option value="Smoothie">Smoothie</option>
+                <option value="Sorbet">Sorbet</option>
+                <option value="Toast">Toast</option>
+            </select>
+            <label for="milk-category">Category</label>
+        </div>
+        <div class="input-field">
+          <textarea id="milk-description" class="materialize-textarea" required></textarea>
+          <label for="milk-description">Description</label>
+        </div>
+        <div class="input-field">
+          <input id="milk-price" type="number" min="1" required>
+          <label for="milk-price">Price</label>
+        </div>
+        <div class="input-field">
+            <input id="milk-size" type="number" min="1" required>
+            <label for="milk-size">Size (in L)</label>
+          </div>
+        <div class="input-field">
+          <input id="milk-image" type="text" required>
+          <label for="milk-image">Image name</label>
+        </div>
+        <button class="btn waves-effect waves-light" type="submit">Add Milks</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="hero-section">
+    <!-- Add a container for the layout -->
+    <div class="container row">
+      <!-- Filter Sidebar -->
+      <div class="col s12 m3">
+        <div id="filter-sidebar">
+          <h5 class="text-gradient">Filter Products</h5>
+          
+          <!-- Filter by Category -->
+          <h6 class="text-gradient">Categories</h6>
+          <p>
+            <label>
+              <input type="checkbox" class="category-filter" value="Full Cream" />
+              <span>Full Cream</span>
+            </label>
+          </p>
+          <p>
+            <label>
+              <input type="checkbox" class="category-filter" value="Low Fat" />
+              <span>Low Fat</span>
+            </label>
+          </p>
+          <p>
+            <label>
+              <input type="checkbox" class="category-filter" value="Skimmed" />
+              <span>Skimmed</span>
+            </label>
+          </p>
+          <p>
+            <label>
+              <input type="checkbox" class="category-filter" value="Soy" />
+              <span>Soy</span>
+            </label>
+          </p>
+          <p>
+            <label>
+              <input type="checkbox" class="category-filter" value="Almond" />
+              <span>Almond</span>
+            </label>
+          </p>
+          <p>
+            <label>
+              <input type="checkbox" class="category-filter" value="Oat" />
+              <span>Oat</span>
+            </label>
+          </p>
+          <p>
+            <label>
+              <input type="checkbox" class="category-filter" value="Coconut" />
+              <span>Coconut</span>
+            </label>
+          </p>
+          <p>
+            <label>
+              <input type="checkbox" class="category-filter" value="Rice" />
+              <span>Rice</span>
+            </label>
+          </p>
+        
+          <!-- Filter by Size -->
+          <h6 class="text-gradient">Sizes</h6>
+          <p>
+            <label>
+              <input type="checkbox" class="size-filter" value="1" />
+              <span>1L</span>
+            </label>
+          </p>
+          <p>
+            <label>
+              <input type="checkbox" class="size-filter" value="2" />
+              <span>2L</span>
+            </label>
+          </p>
+          <p>
+            <label>
+              <input type="checkbox" class="size-filter" value="3" />
+              <span>3L</span>
+            </label>
+          </p>
+          <p>
+            <label>
+              <input type="checkbox" class="size-filter" value="4L" />
+              <span>4L</span>
+            </label>
+          </p>
+
+          <!-- Filter by Price -->
+          <h6>Price Range</h6>
+          <div class="input-field">
+            <input type="range" id="price-filter" min="0" max="50" step="5" />
+            <span id="price-display">Up to $50</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Products Section -->
+      <div class="col s12 m9">
+        <div id="products">
+            <h4 class="center text-gradient">Our Milks Products</h4>
+            <a href="#add-modal" class="modal-trigger black-text"><i class="material-icons">add</i></a>
+          <div class="row" id="product-list">
+            <!-- Existing Product Cards (Unchanged) -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="page-footer black">
+    <div class="container">
+      <div class="row">
+        <div class="col s12 m6">
+          <h5 class="white-text"></h5>
+            <a href="/ ">Home</a>
+            <span class="mx-1">&middot;</span>
+            <a href="/#about-us">About Us</a>
+            <span class="mx-1">&middot;</span>
+            <a class="small" href="privacy.html">Privacy</a>
+            <span class="mx-1">&middot;</span>
+            <a class="small" href="termsofuse.html">Terms</a>
+            <span class="mx-1">&middot;</span>
+            <a class="small" href="contact.html">Contact</a>
+            <p class="grey-text text-lighten-4">© <script>document.write(/\d{4}/.exec(Date())[0])</script> Grocify. All rights reserved.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Materialize JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <!-- Custom JS -->
+  <script>
+    // Initialize Mobile Sidenav
+    document.addEventListener('DOMContentLoaded', function () {
+      const elems = document.querySelectorAll('.sidenav');
+      M.Sidenav.init(elems);
+    });
+  </script>
+
+  <script>
+    // Initialize Modals
+    document.addEventListener('DOMContentLoaded', function () {
+      const modals = document.querySelectorAll('.modal');
+      M.Modal.init(modals);
+    });
+  </script>
+
+  <script>
+    // Search Functionality
+    document.getElementById('search-btn').addEventListener('click', function () {
+      const query = document.getElementById('search-input').value.trim();
+      if (query) {
+        console.log(`Search for: ${query}`); // Replace with actual search logic
+        alert(`You searched for: "${query}"`);
+      } else {
+        alert('Please enter a search term.');
+      }
+    });
+  </script>
+  <script>
+    function addToCart(productName) {
+        // Get the current cart items from localStorage or initialize it as an empty array
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        // Add the new product to the cart
+        cart.push(productName);
+        // Save the updated cart back to localStorage
+        localStorage.setItem('cart', JSON.stringify(cart));
+    }
+  </script>
+
+  <!-- filer function -->
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const categoryFilters = document.querySelectorAll('.category-filter');
+    const sizeFilters = document.querySelectorAll('.size-filter');
+    const priceFilter = document.getElementById('price-filter');
+    const priceDisplay = document.getElementById('price-display');
+    const productList = document.getElementById('product-list');
+
+    // Update price display dynamically
+    priceFilter.addEventListener('input', () => {
+      priceDisplay.textContent = `Up to $${priceFilter.value}`;
+      filterProducts();
+    });
+
+    // Filter products when a categoryFilters checkbox is clicked
+    categoryFilters.forEach((checkbox) => {
+      checkbox.addEventListener('change', filterProducts);
+    });
+
+    // Filter products when a sizeFilters checkbox is clicked
+    sizeFilters.forEach((checkbox) => {
+      checkbox.addEventListener('change', filterProducts);
+    });
+
+    function filterProducts() {
+      const selectedCategories = Array.from(categoryFilters)
+        .filter((checkbox) => checkbox.checked)
+        .map((checkbox) => checkbox.value);
+      const selectedSizes = Array.from(sizeFilters)
+        .filter((checkbox) => checkbox.checked)
+        .map((checkbox) => checkbox.value);
+      const maxPrice = parseInt(priceFilter.value, 10);
+
+      // Filter logic (mock data used as example)
+      const allProducts = [
+        { name: 'Full Cream Milk',size: 1, price: 10, category: 'Full Cream',  description: 'Fresh Full Cream Milk from Gippsland'},
+        { name: 'Low Fat Milk', size: 2, price: 8, category: 'Low Fat', description: 'Low Fat Milk from Gippsland'},
+        { name: 'Skimmed Milk', size: 3, price: 6, category: 'Skimmed', description: 'Skimmed Milk from Gippsland'},
+        { name: 'Soy Milk', size: 4, price: 7, category: 'Soy', description: 'Soy Milk from Gippsland'},
+        { name: 'Almond Milk', size: 3, price: 9, category: 'Almond', description: 'Almond Milk from Gippsland'},
+        { name: 'Oat Milk', size: 2, price: 8, category: 'Oat', description: 'Oat Milk from Gippsland'},
+        { name: 'Coconut Milk', size: 1, price: 10, category: 'Coconut', description: 'Coconut Milk from Gippsland'},
+        { name: 'Rice Milk', size: 2, price: 7, category: 'Rice', description: 'Rice Milk from Gippsland'},
+      ];
+
+      const filteredProducts = allProducts.filter((product) => {
+        const matchesCategory =
+          selectedCategories.length === 0 ||
+          selectedCategories.includes(product.category);
+        const matchesSize = selectedSizes.length === 0 || selectedSizes.includes(product.size.toString());
+        const matchesPrice = product.price <= maxPrice;
+        return matchesCategory && matchesPrice && matchesSize;
+      });
+
+      // Update UI
+      renderProducts(filteredProducts);
+    }
+
+        //Please replace the following line if you have the images
+    // <img src="assets/${product.name.toLowerCase()}.jpg" alt="${product.name}">
+
+    function renderProducts(products) {
+      productList.innerHTML = products
+        .map(
+          (product) => `
+            <div class="col s12 m6 l3">
+              <div class="product-card">
+                <div class="product-card-image">
+                  <img src="assets/milks.jpg" alt="${product.name}">
+                  <div class="product-card-title-overlay">
+                    <h5>${product.name}</h5>
+                  </div>
+                  <div class="product-card-overlay">
+                    <h5 class="left-align">${product.name}</h5>
+                    <p>${product.category}</p>
+                    <p>${product.description}</p>
+                    <p>Size: ${product.size}L</p>
+                    <p>Price: $${product.price}</p>
+                    <div class="center">
+                      <a href="#" class="btn" onclick="addToCart('${product.name}')">Add to Cart</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>`
+        )
+        .join('');
+    }
+
+    // Initial render
+    filterProducts();
+  });
+  </script>
+
+  <script>
+    // Add Milk Script
+    document.addEventListener('DOMContentLoaded', () => {
+      const productList = document.getElementById('product-list');
+      const addMilkForm = document.getElementById('add-milk-form');
+
+      // Function to render a product
+      const renderProduct = (product) => {
+        const productCard = document.createElement('div');
+        productCard.className = 'col s12 m6 l3';
+        productCard.innerHTML = `
+             <div class="product-card">
+                <div class="product-card-image">
+                  <img src="assets/${product.name.toLowerCase()}.jpg" alt="${product.name}">
+                  <div class="product-card-title-overlay">
+                    <h5>${product.name}</h5>
+                  </div>
+                  <div class="product-card-overlay">
+                    <h5 class="left-align">${product.name}</h5>
+                    <p>${product.category}</p>
+                    <p>${product.description}</p>
+                    <p>Size: ${product.size}L</p>
+                    <p>Price: $${product.price}</p>
+                    <div class="center">
+                      <a href="#" class="btn" onclick="addToCart('${product.name}')">Add to Cart</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+        `
+        productList.appendChild(productCard);
+      };
+
+      // Handle form submission
+      addMilkForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const name = document.getElementById('milk-name').value;
+        const category = document.getElementById('milk-category').value;
+        const description = document.getElementById('milk-description').value;
+        const price = document.getElementById('milk-price').value;
+        const size = document.getElementById('milk-size').value;
+        const image = document.getElementById('milk-image').value;
+
+        const newMilk = { name, category, description, price, size, image };
+        renderProduct(newMilk);
+
+        // Reset form fields
+        addMilkForm.reset();
+        M.toast({ html: `${name} has been added!` });
+        console.log('New Milk added:', newMilk);
+      });
+    });
+  </script>
+
+</body>
+</html>
