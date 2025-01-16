@@ -68,12 +68,22 @@
   <div id="add-modal" class="modal">
     <div class="modal-content">
       <h4 class="center">Add a New Fruit</h4>
-      <! -- Add a form to add a new fruit -->
+      <!-- Add a form to add a new fruit -->
       <form id="add-fruit-form">
         <div class="input-field">
           <input id="fruit-name" type="text" required>
           <label for="fruit-name">Fruit Name</label>
         </div>
+        <div class="input-field">
+          <select id="fruit-category" required>
+              <option value="" disabled selected>Choose a category</option>
+              <option value="Apple">Apple</option>
+              <option value="Banana">Banana</option>
+              <option value="Orange">Orange</option>
+              <option value="Kiwi">Kiwi</option>
+          </select>
+          <label for="fruit-category">Category</label>
+      </div>
         <div class="input-field">
           <textarea id="fruit-description" class="materialize-textarea" required></textarea>
           <label for="fruit-description">Description</label>
@@ -86,7 +96,10 @@
           <input id="fruit-image" type="text" required>
           <label for="fruit-image">Image name</label>
         </div>
-        <button class="btn waves-effect waves-light" type="submit">Add Fruit</button>
+        <div class="modal-footer">
+          <a href="#!" class="waves-effect waves-green btn-flat modal-close">Close</a>
+          <button class="btn waves-effect waves-light" type="submit">Add Fruit</button>
+        </div>
       </form>
     </div>
   </div>
@@ -262,14 +275,15 @@
         .map(
           (product) => `
             <div class="col s12 m6 l3">
-              <div class="fruits-card">
-                <div class="fruits-card-image">
+              <div class="product-card">
+                <div class="product-card-image">
                   <img src="assets/${product.name.toLowerCase()}.jpg" alt="${product.name}">
-                  <div class="fruits-card-title-overlay">
+                  <div class="product-card-title-overlay">
                     <h5>${product.name}</h5>
                   </div>
-                  <div class="fruits-card-overlay">
+                  <div class="product-card-overlay">
                     <h5 class="left-align">${product.name}</h5>
+                    <p>${product.category}</p>
                     <p>${product.description}</p>
                     <p>Price: $${product.price}</p>
                     <div class="center">
@@ -299,14 +313,15 @@
         const productCard = document.createElement('div');
         productCard.className = 'col s12 m6 l3';
         productCard.innerHTML = `
-              <div class="fruits-card">
-                <div class="fruits-card-image">
+              <div class="product-card">
+                <div class="product-card-image">
                   <img src="assets/${product.name.toLowerCase()}.jpg" alt="${product.name}">
-                  <div class="fruits-card-title-overlay">
+                  <div class="product-card-title-overlay">
                     <h5>${product.name}</h5>
                   </div>
-                  <div class="fruits-card-overlay">
+                  <div class="product-card-overlay">
                     <h5 class="left-align">${product.name}</h5>
+                    <p>${product.category}</p>
                     <p>${product.description}</p>
                     <p>Price: $${product.price}</p>
                     <div class="center">
@@ -324,6 +339,7 @@
       addFruitForm.addEventListener('submit', (e) => {
         e.preventDefault();
         const name = document.getElementById('fruit-name').value;
+        const category = document.getElementById('fruit-category').value;
         const description = document.getElementById('fruit-description').value;
         const price = document.getElementById('fruit-price').value;
         const image = document.getElementById('fruit-image').value;
@@ -336,6 +352,14 @@
         M.toast({ html: `${name} has been added!` });
         console.log('New fruit added:', newFruit);
       });
+    });
+  </script>
+
+  // Add Snack Model Initialization
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const elems = document.querySelectorAll('select');
+        M.FormSelect.init(elems);
     });
   </script>
 
