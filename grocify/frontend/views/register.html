@@ -17,28 +17,48 @@
   <!-- Navbar -->
   <nav class="white">
     <div class="nav-wrapper container">
-        <a href="index.html" class="brand-logo black-text"><img src="assets/logo.png" alt="Grocify" width="15%"></a>
-        <a href="#" data-target="mobile-menu" class="sidenav-trigger"><i class="material-icons black-text"><i class="material-icons">menu</i></i></a>
+        <!-- Logo Section -->
+        <a href="index.html" class="brand-logo black-text"><img src="assets/logo.png" alt="Grocify" id="nav-logo"></a>
+        <!-- Mobile Menu Icon -->
+        <a href="#" data-target="mobile-menu" class="sidenav-trigger">
+          <i class="material-icons black-text">menu</i>
+        </a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <li><a href="index.html" class="black-text">Home</a></li>
-          <li><a href="index.html/#about-us" class="black-text">About Us</a></li>
-          <li><a href="pricecheck.html" class="black-text">Price Check</a></li>
-          <li><a href="recommendation.html" class="black-text">Recommendation</a></li>
-          <li><a href="prediction.html" class="black-text">Prediction</a></li>
-          <li><a href="contact.html" class="black-text">Contact</a></li>
+            <li><a href="/" class="black-text">Home</a></li>
+            <li><a href="/#about-us" class="black-text">About Us</a></li>
+            <li><a href="contact.html" class="black-text">Contact</a></li>
+            <li><a href="login.html" class="black-text">Log In</a></li>
+            <li><a href="register.html" class="btn">Sign Up</a></li>
+            <li><a href="#search-modal" class="modal-trigger black-text"><i class="material-icons">search</i></a></li>
+            <li><a href="cart.html" class="black-text"><i class="material-icons">shopping_cart</i></a></li>
         </ul>
     </div>
   </nav>
 
+  <!-- Search Modal -->
+  <div id="search-modal" class="modal">
+    <div class="modal-content">
+      <h4>Search</h4>
+      <div class="input-field">
+        <input type="text" id="search-input" placeholder="Type your search here...">
+      </div>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="waves-effect waves-green btn-flat modal-close">Close</a>
+      <a href="#!" id="search-btn" class="waves-effect waves-light btn-flat ">Search</a>
+    </div>
+  </div>
+
   <!-- Mobile Menu -->
   <ul class="sidenav" id="mobile-menu">
-    <li><a href="index.html" class="black-text">Home</a></li>
-    <li><a href="index.html/#about-us" class="black-text">About Us</a></li>
+    <li><a href="/ " class="black-text">Home</a></li>
+    <li><a href="#about-us" class="black-text">About Us</a></li>
     <li><a href="pricecheck.html" class="black-text">Price Check</a></li>
     <li><a href="recommendation.html" class="black-text">Recommendation</a></li>
     <li><a href="prediction.html" class="black-text">Prediction</a></li>
     <li><a href="contact.html" class="black-text">Contact</a></li>
-    <li><a href="login.html" class="black-text">Log In</a></li>
+    <li><a href="register.html" class="black-text">Sign Up</a></li>
+    <li><a href="#search-modal" class="modal-trigger black-text">Search</a></li>
   </ul>
 
   <!-- SignUp Section -->

@@ -17,32 +17,51 @@
   <!-- Navbar -->
   <nav class="white">
     <div class="nav-wrapper container">
-        <a href="index.html" class="brand-logo black-text"><img src="assets/logo.png" alt="Grocify" width="15%"></a>
-        <a href="#" data-target="mobile-menu" class="sidenav-trigger"><i class="material-icons black-text"><i class="material-icons">menu</i></i></a>
+        <!-- Logo Section -->
+        <a href="index.html" class="brand-logo black-text"><img src="assets/logo.png" alt="Grocify" id="nav-logo"></a>
+        <!-- Mobile Menu Icon -->
+        <a href="#" data-target="mobile-menu" class="sidenav-trigger">
+          <i class="material-icons black-text">menu</i>
+        </a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
-          <li><a href="index.html" class="black-text">Home</a></li>
-          <li><a href="index.html/#about-us" class="black-text">About Us</a></li>
-          <li><a href="pricecheck.html" class="black-text">Price Check</a></li>
-          <li><a href="recommendation.html" class="black-text">Recommendation</a></li>
-          <li><a href="prediction.html" class="black-text">Prediction</a></li>
-          <li><a href="contact.html" class="black-text">Contact</a></li>
+            <li><a href="/" class="black-text">Home</a></li>
+            <li><a href="/#about-us" class="black-text">About Us</a></li>
+            <li><a href="contact.html" class="black-text">Contact</a></li>
+            <li><a href="login.html" class="black-text">Log In</a></li>
+            <li><a href="register.html" class="btn">Sign Up</a></li>
+            <li><a href="#search-modal" class="modal-trigger black-text"><i class="material-icons">search</i></a></li>
         </ul>
     </div>
   </nav>
 
+  <!-- Search Modal -->
+  <div id="search-modal" class="modal">
+    <div class="modal-content">
+      <h4>Search</h4>
+      <div class="input-field">
+        <input type="text" id="search-input" placeholder="Type your search here...">
+      </div>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="waves-effect waves-green btn-flat modal-close">Close</a>
+      <a href="#!" id="search-btn" class="waves-effect waves-light btn-flat ">Search</a>
+    </div>
+  </div>
+
   <!-- Mobile Menu -->
   <ul class="sidenav" id="mobile-menu">
-    <li><a href="index.html" class="black-text">Home</a></li>
-    <li><a href="index.html/#about-us" class="black-text">About Us</a></li>
+    <li><a href="/ " class="black-text">Home</a></li>
+    <li><a href="#about-us" class="black-text">About Us</a></li>
     <li><a href="pricecheck.html" class="black-text">Price Check</a></li>
     <li><a href="recommendation.html" class="black-text">Recommendation</a></li>
     <li><a href="prediction.html" class="black-text">Prediction</a></li>
     <li><a href="contact.html" class="black-text">Contact</a></li>
     <li><a href="register.html" class="black-text">Sign Up</a></li>
+    <li><a href="#search-modal" class="modal-trigger black-text">Search</a></li>
   </ul>
 
   <!-- login Section -->
-  <div class="section no-pad-bot" id="login">
+  <div class="hero-section no-pad-bot" id="login">
     <div class="container">
       <div class="login-register-card">
         <div class="card-content">
@@ -66,7 +85,10 @@
               <div class="pt-1 mb-4">
                 <button type="submit" class="btn-large waves-effect waves-light black white-text">Log In</button>
               </div>
-                <p class="mb-5 pb-lg-2" style="color: #393f81;">Don't have an account? <a href="register.html" style="color: #393f81;">Sign up here</a></p>
+                <p class="mb-5 pb-lg-2" style="color: #393f81;">Forgot your password? <a href="forgot.html"style="color: #393f81;">Reset here</a></p>
+                <p class="mb-5 pb-lg-2" style="color: #393f81;">Don't have an account? <a href="register.html" style="color: #393f81;">Sign up here</a></p>                
+                <a href="#!" class="small text-muted">Terms of use.</a>
+                <a href="#!" class="small text-muted">Privacy policy</a>
             </form>
           </div>
         </div>  
