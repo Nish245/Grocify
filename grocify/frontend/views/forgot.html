@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reset Password | Grocify</title>
+  <!-- Favicon-->
+  <link rel="icon" type="image/x-icon" href="assets/icons.png" />
+  <!-- Materialize CSS Framework -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/temp2.css">
+</head>
+<body>
+    
+
+  <!-- Navbar -->
+  <nav class="white">
+    <div class="nav-wrapper container">
+        <!-- Logo Section -->
+        <a href="index.html" class="brand-logo black-text"><img src="assets/logo.png" alt="Grocify" id="nav-logo"></a>
+        <!-- Mobile Menu Icon -->
+        <a href="#" data-target="mobile-menu" class="sidenav-trigger">
+          <i class="material-icons black-text">menu</i>
+        </a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a href="/" class="black-text">Home</a></li>
+            <li><a href="/#about-us" class="black-text">About Us</a></li>>
+            <li><a href="contact.html" class="black-text">Contact</a></li>
+            <li><a href="login.html" class="black-text">Log In</a></li>
+            <li><a href="register.html" class="btn">Sign Up</a></li>
+            <li><a href="#search-modal" class="modal-trigger black-text"><i class="material-icons">search</i></a></li>
+        </ul>
+    </div>
+  </nav>
+
+  <!-- Search Modal -->
+  <div id="search-modal" class="modal">
+    <div class="modal-content">
+      <h4>Search</h4>
+      <div class="input-field">
+        <input type="text" id="search-input" placeholder="Type your search here...">
+      </div>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="waves-effect waves-green btn-flat modal-close">Close</a>
+      <a href="#!" id="search-btn" class="waves-effect waves-light btn-flat ">Search</a>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <ul class="sidenav" id="mobile-menu">
+    <li><a href="/ " class="black-text">Home</a></li>
+    <li><a href="#about-us" class="black-text">About Us</a></li>
+    <li><a href="pricecheck.html" class="black-text">Price Check</a></li>
+    <li><a href="recommendation.html" class="black-text">Recommendation</a></li>
+    <li><a href="prediction.html" class="black-text">Prediction</a></li>
+    <li><a href="contact.html" class="black-text">Contact</a></li>
+    <li><a href="register.html" class="black-text">Sign Up</a></li>
+    <li><a href="#search-modal" class="modal-trigger black-text">Search</a></li>
+  </ul>
+
+  <!-- login Section -->
+  <div class="hero-section no-pad-bot" id="login">
+    <div class="container">
+      <div class="login-register-card">
+        <div class="card-content">
+          <div class="container">
+            <h4 class="center-align">Grocify</h4>
+            <h4 class="center-align">Forgot Password</h4>
+            <br>
+            <h6 class="center-align">Enter your email address, and we'll send you a link to reset your password.</h6>
+        
+            <!-- Forgot Password Form -->
+            <form id="forgot-password-form">
+              <div class="input-field">
+                <input id="email" type="email" required>
+                <label for="email">Email Address</label>
+              </div>
+              <button class="btn-large waves-effect waves-light black white-text" type="submit">Send Reset Link</button>
+            </form>
+            <p class="mb-5 pb-lg-2" style="color: #393f81;">Remember your password? <a href="login.html"
+                style="color: #393f81;">Login here</a></p>
+            <a href="#!" class="small text-muted">Terms of use.</a>
+            <a href="#!" class="small text-muted">Privacy policy</a>
+            <!-- Message Area -->
+            <div class="message" id="message"></div>
+          </div>
+        </div>  
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Footer -->
+  <footer class="page-footer black">
+    <div class="container">
+      <div class="row">
+        <div class="col s12">
+          <h5 class="white-text"></h5>
+            <a href="/ ">Home</a>
+            <span class="mx-1">&middot;</span>
+            <a href="/#about-us">About Us</a>
+            <span class="mx-1">&middot;</span>
+            <a class="small" href="privacy.html">Privacy</a>
+            <span class="mx-1">&middot;</span>
+            <a class="small" href="termsofuse.html">Terms</a>
+            <span class="mx-1">&middot;</span>
+            <a class="small" href="contact.html">Contact</a>
+            <p class="grey-text text-lighten-4">© <script>document.write(/\d{4}/.exec(Date())[0])</script> Grocify. All rights reserved.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Materialize JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <!-- Custom JS -->
+  <script>
+    // Initialize Mobile Sidenav
+    document.addEventListener('DOMContentLoaded', function () {
+      const elems = document.querySelectorAll('.sidenav');
+      M.Sidenav.init(elems);
+    });
+  </script>
+
+    
+    <script>
+        // Forgot Password Script
+        const form = document.getElementById('forgot-password-form');
+        const emailInput = document.getElementById('email');
+        const messageDiv = document.getElementById('message');
+
+        // Handle form submission
+        form.addEventListener('submit', (event) => {
+        event.preventDefault(); // Prevent form submission
+
+        const email = emailInput.value;
+
+        if (validateEmail(email)) {
+            // Simulate sending a reset email
+            messageDiv.innerHTML = `<span class="green-text">A reset link has been sent to <b>${email}</b>.</span>`;
+            emailInput.value = ""; // Clear the input field
+        } else {
+            messageDiv.innerHTML = `<span class="red-text">Please enter a valid email address.</span>`;
+        }
+        });
+
+        // Validate email format
+        function validateEmail(email) {
+        const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return regex.test(email);
+        }
+  </script>
+
+</body>
+</html>
