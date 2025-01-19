@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Reset Password | Grocify</title>
-  <!-- Favicon-->
-  <link rel="icon" type="image/x-icon" href="assets/icons.png" />
-  <!-- Materialize CSS Framework -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <!-- Custom CSS -->
-  <link rel="stylesheet" href="css/temp2.css">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grocify</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/icons.png" />
+    <!-- Materialize CSS Framework -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/temp2.css">
 </head>
 <body>
-    
 
   <!-- Navbar -->
   <nav class="white">
@@ -26,11 +26,15 @@
         </a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
             <li><a href="/" class="black-text">Home</a></li>
-            <li><a href="/#about-us" class="black-text">About Us</a></li>>
+            <li><a href="/#about-us" class="black-text">About Us</a></li>
+            <li><a href="pricecheck.html" class="black-text">Price Check</a></li>
+            <li><a href="recommendation.html" class="black-text">Recommendation</a></li>
+            <li><a href="prediction.html" class="black-text">Prediction</a></li>
             <li><a href="contact.html" class="black-text">Contact</a></li>
             <li><a href="login.html" class="black-text">Log In</a></li>
             <li><a href="register.html" class="btn">Sign Up</a></li>
             <li><a href="#search-modal" class="modal-trigger black-text"><i class="material-icons">search</i></a></li>
+            <li><a href="cart.html" class="black-text"><i class="material-icons">shopping_cart</i></a></li>
         </ul>
     </div>
   </nav>
@@ -45,7 +49,7 @@
     </div>
     <div class="modal-footer">
       <a href="#!" class="waves-effect waves-green btn-flat modal-close">Close</a>
-      <a href="#!" id="search-btn" class="waves-effect waves-light btn-flat ">Search</a>
+      <a href="#!" id="search-btn" class="waves-effect waves-light btn-flat">Search</a>
     </div>
   </div>
 
@@ -61,40 +65,34 @@
     <li><a href="#search-modal" class="modal-trigger black-text">Search</a></li>
   </ul>
 
-  <!-- login Section -->
-  <div class="hero-section no-pad-bot" id="login">
+  <!-- Cart Section -->
+  <div class="hero-section no-pad-bot" id="cart">
     <div class="container">
       <div class="login-register-card">
-        <div class="card-content">
-          <div class="container">
-            <h4 class="center-align">Grocify</h4>
-            <h4 class="center-align">Forgot Password</h4>
-            <br>
-            <h6 class="center-align">Enter your email address, and we'll send you a link to reset your password.</h6>
-        
-            <!-- Forgot Password Form -->
-            <form id="forgot-password-form">
-              <div class="input-field">
-                <input id="email" type="email" required>
-                <label for="email">Email Address</label>
-              </div>
-              <button class="btn-large waves-effect waves-light black white-text" type="submit">Send Reset Link</button>
-            </form>
-            <p class="mb-5 pb-lg-2" style="color: #393f81;">Remember your password? <a href="login.html"
-                style="color: #393f81;">Login here</a></p>
-            <a href="#!" class="small text-muted">Terms of use.</a>
-            <a href="#!" class="small text-muted">Privacy policy</a>
-            <!-- Message Area -->
-            <div class="message" id="message"></div>
-          </div>
-        </div>  
+        <h3 class="center-align">Your Cart</h3>
+        <div class="cart-section-header">
+          Your Selected Items
+        </div>
+        <div class="cart-header">
+          <div>Product</div>
+          <div>Price</div>
+          <div>Quantity</div>
+          <div>Total</div>
+        </div>
+        <div id="cart-header">
+          <!-- Cart items will be dynamically added here -->
+        </div>
+
+        <div class="total-container">
+          <h5>Total: $<span id="total-price">0.00</span></h5>
+          <button class="btn-large green" id="checkout-btn">Checkout</button>
+        </div>
       </div>
     </div>
   </div>
 
-
   <!-- Footer -->
-  <footer class="page-footer black">
+   <footer class="page-footer black">
     <div class="container">
       <div class="row">
         <div class="col s12">
@@ -114,11 +112,11 @@
     </div>
   </footer>
 
+
   <!-- Materialize JS -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   <!-- Custom JS -->
   <script src="js/scripts.js"></script>
-  <script src="js/forgot.js"></script>
-  
+  <script src="js/cart.js"></script>
 </body>
 </html>

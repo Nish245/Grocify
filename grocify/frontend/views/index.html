@@ -67,8 +67,8 @@
   <!-- Hero Section -->
   <div class="hero-section no-pad-bot" id="hero">
     <div class="container">
-      <h1 class="header center">Save Big, Shop Smart</h1>
-      <h5 class="center -text">Find the Best Deals on Groceries in Seconds!</h5>
+      <h1 class="center black-text">Save Big, Shop Smart</h1>
+      <h5 class="center black-text">Find the Best Deals on Groceries in Seconds!</h5>
       <br>
       <div class="center">
         <a href="register.html" class="btn-large waves-effect waves-light black white-text">Join Now</a>
@@ -252,34 +252,6 @@
   <!-- Materialize JS -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   <!-- Custom JS -->
-  <script>
-    // Initialize Mobile Sidenav
-    document.addEventListener('DOMContentLoaded', function () {
-      const elems = document.querySelectorAll('.sidenav');
-      M.Sidenav.init(elems);
-    });
-  </script>
-
-  <script>
-    // Initialize Modals
-    document.addEventListener('DOMContentLoaded', function () {
-      const modals = document.querySelectorAll('.modal');
-      M.Modal.init(modals);
-    });
-  </script>
-
-  <script>
-    // Search Functionality
-    document.getElementById('search-btn').addEventListener('click', function () {
-      const query = document.getElementById('search-input').value.trim();
-      if (query) {
-        console.log(`Search for: ${query}`); // Replace with actual search logic
-        alert(`You searched for: "${query}"`);
-      } else {
-        alert('Please enter a search term.');
-      }
-    });
-  </script>
-
+  <script src="js/scripts.js"></script>
 </body>
 </html>

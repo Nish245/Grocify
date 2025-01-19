@@ -14,48 +14,74 @@
 </head>
 <body>
 
-  <!-- Navbar -->
-  <nav class="white">
-    <div class="nav-wrapper container">
-        <a href="index.html" class="brand-logo black-text"><img src="assets/logo.png" alt="Grocify" width="15%"></a>
-        <a href="#" data-target="mobile-menu" class="sidenav-trigger"><i class="material-icons black-text"><i class="material-icons">menu</i></i></a>
-        <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <li><a href="/" class="black-text">Home</a></li>
-            <li><a href="/#about-us" class="black-text">About Us</a></li>
-            <li><a href="pricecheck.html" class="black-text">Price Check</a></li>
-            <li><a href="recommendation.html" class="black-text">Recommendation</a></li>
-            <li><a href="prediction.html" class="black-text">Prediction</a></li>
-            <li><a href="contact.html" class="black-text">Contact</a></li>
-            <li><i class="material-icons black-text">person_pin</i></li>
-        </ul>
+    <!-- Navbar -->
+    <nav class="white">
+        <div class="nav-wrapper container">
+            <!-- Logo Section -->
+            <a href="index.html" class="brand-logo black-text"><img src="assets/logo.png" alt="Grocify" id="nav-logo"></a>
+            <!-- Mobile Menu Icon -->
+            <a href="#" data-target="mobile-menu" class="sidenav-trigger">
+            <i class="material-icons black-text">menu</i>
+            </a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a href="/" class="black-text">Home</a></li>
+                <li><a href="/#about-us" class="black-text">About Us</a></li>
+                <li><a href="pricecheck.html" class="black-text">Price Check</a></li>
+                <li><a href="recommendation.html" class="black-text">Recommendation</a></li>
+                <li><a href="prediction.html" class="black-text">Prediction</a></li>
+                <li><a href="contact.html" class="black-text">Contact</a></li>
+                <li><a href="login.html" class="black-text">Log In</a></li>
+                <li><a href="register.html" class="btn">Sign Up</a></li>
+                <li><a href="#search-modal" class="modal-trigger black-text"><i class="material-icons">search</i></a></li>
+                <li><a href="cart.html" class="black-text"><i class="material-icons">shopping_cart</i></a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Search Modal -->
+    <div id="search-modal" class="modal">
+        <div class="modal-content">
+        <h4>Search</h4>
+        <div class="input-field">
+            <input type="text" id="search-input" placeholder="Type your search here...">
+        </div>
+        </div>
+        <div class="modal-footer">
+        <a href="#!" class="waves-effect waves-green btn-flat modal-close">Close</a>
+        <a href="#!" id="search-btn" class="waves-effect waves-light btn-flat ">Search</a>
+        </div>
     </div>
-  </nav>
 
-   <!-- Mobile Menu -->
-   <ul class="sidenav" id="mobile-menu">
-    <li><a href="/ " class="black-text">Home</a></li>
-    <li><a href="#about-us" class="black-text">About Us</a></li>
-    <li><a href="pricecheck.html" class="black-text">Price Check</a></li>
-    <li><a href="recommendation.html" class="black-text">Recommendation</a></li>
-    <li><a href="prediction.html" class="black-text">Prediction</a></li>
-    <li><a href="contact.html" class="black-text">Contact</a></li>
-    <li><a href="register.html" class="black-text">Sign Up</a></li>
-  </ul>
+    <!-- Mobile Menu -->
+    <ul class="sidenav" id="mobile-menu">
+        <li><a href="/ " class="black-text">Home</a></li>
+        <li><a href="#about-us" class="black-text">About Us</a></li>
+        <li><a href="pricecheck.html" class="black-text">Price Check</a></li>
+        <li><a href="recommendation.html" class="black-text">Recommendation</a></li>
+        <li><a href="prediction.html" class="black-text">Prediction</a></li>
+        <li><a href="contact.html" class="black-text">Contact</a></li>
+        <li><a href="register.html" class="black-text">Sign Up</a></li>
+        <li><a href="#search-modal" class="modal-trigger black-text">Search</a></li>
+    </ul>
 
 
-    <div class="hero-section no-pad-bot" id="contact">
+    <div class="hero-section no-pad-bot" id="profile">
         <div class=" row container">
-            <div class="col s3 m4 l3">
+            <div class="col s12 m3">
                 <!-- Left Hand Side navigation panel -->
-                <ul class="section table-of-contents bold-active" id="dashboard-menu">
-                    <li><a href="dashboard.html" class="black-text">Home</a></li>
-                    <li><a href="profile.html" class="active black-text">Profile</a></li>
-                    <li><a href="pricecheck.html" class="black-text">Price Check</a></li>
-                    <li><a href="recommendation.html" class="black-text">Recommendation</a></li>
-                    <li><a href="prediction.html" class="black-text">Prediction</a></li>
-                    <li><a href="contact.html" class="black-text">Contact</a></li>
-                    <li><a href="" class="black-text">Sign Out</a></li>
-                </ul>
+                <div class="fliter-sidebar">
+                    <ul class="section table-of-contents bold-active" id="dashboard-menu">
+                        <h5>
+                            <li><a href="dashboard.html" class="black-text">Home</a></li>
+                            <li><a href="profile.html" class="active black-text">Profile</a></li>
+                            <li><a href="pricecheck.html" class="black-text">Price Check</a></li>
+                            <li><a href="recommendation.html" class="black-text">Recommendation</a></li>
+                            <li><a href="prediction.html" class="black-text">Prediction</a></li>
+                            <li><a href="contact.html" class="black-text">Contact</a></li>
+                            <li><a href="" class="black-text">Sign Out</a></li>
+                        </h5>
+                    </ul>
+                </div>
             </div>
         
             <div class="col s9 m8 l9">
@@ -146,44 +172,7 @@
     <!-- Materialize JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <!-- Custom JS -->
-    <script src="script.js"></script>
-    <script>
-        // Handle Profile Picture Upload
-        document.getElementById('upload-picture').addEventListener('change', function (event) {
-        const file = event.target.files[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = function (e) {
-            document.getElementById('profile-img').src = e.target.result; // Preview the image
-            };
-            reader.readAsDataURL(file);
-        }
-        });
-
-        // Handle Personal Information Update
-        document.getElementById('update-info-form').addEventListener('submit', function (event) {
-            event.preventDefault();
-            const name = document.getElementById('name').value.trim();
-            const email = document.getElementById('email').value.trim();
-            const phone = document.getElementById('phone').value.trim();
-            console.log(`Updated Info: Name: ${name}, Email: ${email}, Phone: ${phone}`);
-            alert('Your information has been updated successfully!');
-        });
-
-        // Handle Password Change
-        document.getElementById('change-password-form').addEventListener('submit', function (event) {
-            event.preventDefault();
-            const currentPassword = document.getElementById('current-password').value.trim();
-            const newPassword = document.getElementById('new-password').value.trim();
-            const confirmPassword = document.getElementById('confirm-password').value.trim();
-
-            if (newPassword === confirmPassword) {
-                console.log(`Password Changed! Current: ${currentPassword}, New: ${newPassword}`);
-                alert('Your password has been changed successfully!');
-            } else {
-                alert('New password and confirmation do not match.');
-            }
-        });
-    </script>
+    <script src="js/scripts.js"></script>
+    <script src="js/profile.js"></script>
 </body>
 </html>
