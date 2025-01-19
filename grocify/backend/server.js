@@ -10,6 +10,9 @@ const userRoutes = require('./routes/userRoutes');
 const app = express();
 const PORT = process.env.PORT || 4000;
 
+// const http = require('http').createServer(app);
+// const io = require('socket.io')(http);
+
 // Enable CORS
 const corsOptions = {
   origin: 'http://localhost:3000',
