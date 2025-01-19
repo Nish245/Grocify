@@ -591,3 +591,87 @@ input:focus {
 .default-icon {
   background-image: url('https://upload.wikimedia.org/wikipedia/commons/3/39/Credit-card.svg');
 }
+
+/* Cart Styling */
+.header {
+  background-color: #007bff;
+  color: white;
+  padding: 15px 20px;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.header a {
+  color: white;
+  font-size: 16px;
+  margin-left: 15px;
+  text-decoration: none;
+}
+
+.cart-header {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  padding: 10px 0;
+  border-bottom: 2px solid #ddd;
+  color: #555;
+}
+
+.cart-header div {
+  flex: 1;
+  text-align: center;
+}
+
+.cart-header div:first-child {
+  text-align: left;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.cart-item div {
+  flex: 1;
+  text-align: center;
+}
+
+.cart-item img {
+  width: 80px;
+  height: 80px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.cart-item-details {
+  flex: 1;
+  margin-left: 15px;
+}
+
+.cart-item-quantity {
+  display: flex;
+  align-items: center;
+}
+
+.cart-item-quantity .material-icons {
+  cursor: pointer;
+  color: #007bff;
+  font-size: 24px;
+  margin: 0 5px;
+}
+
+.total-container {
+  margin-top: 20px;
+  text-align: right;
+}
+
+.total-container h5 {
+  font-weight: bold;
+}
