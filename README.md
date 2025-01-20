@@ -52,3 +52,17 @@ A platform to compare product prices across stores, suggest the least expensive 
 ##### Headers
 
  **Authorization: JWT TOKEN** (JWT TOKEN is obtained from /login endpoint)
+
+ <http://localhost:3000/api/user/updateUserPassword>
+
+##### Request Type
+
+**PUT**
+
+##### Headers
+
+ **Authorization: JWT TOKEN** (JWT TOKEN is obtained from /login endpoint)
+
+ ##### Body
+
+**raw { "oldPassword" : "oldPassword", "newPassword" : "newPassword" }**

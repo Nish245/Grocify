@@ -1,7 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-
 require('dotenv').config();
 
 const authRoutes = require('./routes/authRoutes');
@@ -10,9 +9,12 @@ const userRoutes = require('./routes/userRoutes');
 const app = express();
 const PORT = process.env.PORT || 4000;
 
+// const http = require('http').createServer(app);
+// const io = require('socket.io')(http);
+
 // Enable CORS
 const corsOptions = {
-  origin: 'http://localhost:3000',
+  origin: ['http://localhost:3000', 'http://localhost:4000'],
   methods: 'GET,POST,PUT,DELETE',
   allowedHeaders: 'Content-Type,Authorization',
 };
@@ -34,7 +36,7 @@ app.use('/api/user', userRoutes);
 
 // Default route
 app.get('/', (req, res) => {
-  res.send('Welcome to the User Registration and Login API!');
+  res.send('Welcome to Grocify Backend Server!');
 });
 
 // Start the server

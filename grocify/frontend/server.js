@@ -1,17 +1,30 @@
 const express = require('express');
 let app = express();
 let port = process.env.port || 3000;
-// require('./models/dbConnect');
-// let router = require('./routers/routers');
-// const { Socket } = require('socket.io');
 let http = require('http').createServer(app);
-// let io = require('socket.io')(http);
+let io = require('socket.io')(http);
 
 app.use(express.static('public'));
 app.use(express.static('views'));
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 // app.use('/api/routers',router);
+
+io.on('connection', (socket) => {
+    console.log('a user connected');
+    socket.on('disconnect', () => {
+      console.log('a user disconnected');
+    });
+
+    setTimeout(()=> {
+        socket.emit('discountModel');
+        console.log('Discount Model API call.');
+    }, 10000)
+    // setInterval(() => {
+    //   socket.emit('discountModel');
+    //   console.log('Discount Model API call.');
+    // }, 30000)
+  });
 
 http.listen(port, ()=>{
     console.log('express server started');
