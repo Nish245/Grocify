@@ -1,5 +1,6 @@
 const bcrypt = require('bcryptjs');
 const User = require('../models/userModel');
+const {isValidPassword} = require('../controllers/authController');
 
 // Get user details
 const getUserDetails = async (req, res) => {
@@ -21,6 +22,12 @@ const updatePassword = async (req, res) => {
 
     if (!oldPassword || !newPassword) {
       return res.status(400).json({ error: 'Both old and new passwords are required'});
+    }
+
+    if (!isValidPassword(newPassword)) {
+      return res.status(400).json({
+        error: 'Password must be at least 8 characters long, including at least one letter, one number, and one special character'
+      });
     }
 
     const user = await User.findOne({email: req.user.email});
