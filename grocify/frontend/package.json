@@ -11,6 +11,7 @@
   "description": "A platform to compare product prices across stores, suggest the least expensive items, and reduce food waste.",
   "dependencies": {
     "express": "^4.21.2",
-    "node": "^23.5.0"
+    "node": "^23.5.0",
+    "socket.io": "^4.8.1"
   }
 }

@@ -1,11 +1,25 @@
-/*!
-* Start Bootstrap - Personal v1.0.1 (https://startbootstrap.com/template-overviews/personal)
-* Copyright 2013-2023 Start Bootstrap
-* Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-personal/blob/master/LICENSE)
-*/
-// This file is intentionally blank
-// Use this file to add JavaScript to your project
+// Main Function used across all pages.
 
-$(document).ready(function(){
-    $('.modal').modal();
-});
+// Initialize Mobile Sidenav
+    document.addEventListener('DOMContentLoaded', function () {
+        const elems = document.querySelectorAll('.sidenav');
+        M.Sidenav.init(elems);
+    });
+
+// Initialize Modals
+    document.addEventListener('DOMContentLoaded', function () {
+        const modals = document.querySelectorAll('.modal');
+        M.Modal.init(modals);
+    });
+
+
+// Search Functionality
+    document.getElementById('search-btn').addEventListener('click', function () {
+        const query = document.getElementById('search-input').value.trim();
+        if (query) {
+        console.log(`Search for: ${query}`); // Replace with actual search logic
+        alert(`You searched for: "${query}"`);
+        } else {
+        alert('Please enter a search term.');
+        }
+    });

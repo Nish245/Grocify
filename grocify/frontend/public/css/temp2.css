@@ -1,19 +1,60 @@
 /* Custom styles for the website */
 body {
     font-family: 'San Francisco', Helvetica Neue, Helvetica, Arial, and sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
   }
 
-  
-  #hero {
-    background: url('https://via.placeholder.com/1920x600') no-repeat center center;
-    background-size: cover;
-    padding: 150px 0;
+  .hero-section {
+    padding: 50px 0;
+    background-color: white;
   }
-  
-  #hero h1 {
-    font-size: 4rem;
-    font-weight: bold;
-  }
+
+
+  /* Hero Section with Background Image */
+#hero {
+  /* background: url() no-repeat center center; Replace with your image URL */
+  background-size: cover; /* Ensures the image covers the entire section */
+  background-attachment: fixed; /* Optional: Creates a parallax effect */
+  padding: 150px 0; /* Adjust padding for content spacing */
+  color: white; /* Ensures text is readable over the image */
+  text-align: center;
+}
+
+#hero h1 {
+  font-size: 4rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+#hero h5 {
+  font-size: 1.5rem;
+  margin-bottom: 30px;
+}
+
+#hero {
+  position: relative;
+}
+
+#hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  background: url('https://images.unsplash.com/photo-1628102491629-778571d893a3?q=80&w=3560&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center; /* Replace with your image URL */
+  background-size: cover;
+  mask-image: linear-gradient(transparent, #f9f9f9); /* Creates a gradient mask */
+}
+
+#hero .container {
+  position: relative;
+  z-index: 2; /* Ensures text appears above the overlay */
+}
+
   
   #products h4 {
     margin-bottom: 2rem;
@@ -25,6 +66,7 @@ body {
   
   footer {
     padding: 20px 0;
+    margin-top: auto;
   }
 
   /* Remove underline from navbar links */
@@ -42,8 +84,20 @@ nav .nav-wrapper a {
 .sidenav-trigger i {
     font-size: 2rem; /* Increase menu icon size */
     cursor: pointer;
+}  
+
+/* Navbar Logo */
+#nav-logo {
+  height: 65px; /* Adjust to match your preferred size */
+  width: auto;
+  margin-top: 5px; /* Optional: Fine-tune vertical alignment */
 }
-  
+
+/* Ensure alignment with navigation links */
+.nav-wrapper .brand-logo {
+  display: flex;
+  align-items: center;
+}
 
 /* Pill-style buttons */
 .btn-large {
@@ -73,66 +127,551 @@ nav .nav-wrapper a {
     color: white; /* Ensure text is visible on the red background */
 }
 
-/* Features Section Styles */
+.btn{
+  background-color: red; /* Change background to red on hover */
+  border-radius: 50px; /* Rounded corners for pill shape */
+  padding: 0 30px; /* Extra horizontal padding */
+  font-size: 1.2rem; /* Adjust font size */
+  text-transform: none; /* Remove uppercase styling */
+  transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effects */
+}
+
+.btn:hover {
+  background-color: white; /* Change background to red on hover */
+  color: red; /* Ensure text is visible on the red background */
+}
+
+/* Features Section */
 .features-section {
-    padding: 50px 0;
-    background-color: #f9f9f9;
-  }
-  
-  .features-section h4 {
-    margin-bottom: 30px;
-    font-size: 2.2rem;
-    font-weight: bold;
-  }
-  
-  .feature-card {
-    margin-top: 20px;
-    padding: 20px;
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s, box-shadow 0.3s;
-  }
-  
-  .feature-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-  }
-  
-  .feature-card i {
-    margin-bottom: 15px;
-  }
+  padding: 50px 0;
+  background-color: #f9f9f9;
+}
 
-  /* Login Section Styles */
-  .login-section {
-    margin-top: 20px;
-    padding: 120px;
-    background-color: #f9f9f9;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s, box-shadow 0.3s;
-  }
-    
+.features-section h4 {
+  margin-bottom: 30px;
+  font-size: 2.2rem;
+  font-weight: bold;
+}
 
-  /* Card Section */
-  .card {
+.feature-card {
+  margin-top: 20px;
+  padding: 20px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+
+  /* Fixed Size */
+  height: 300px; /* Set a uniform height for all cards */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Ensures content is spaced evenly */
+  align-items: center; /* Center-aligns the content horizontally */
+}
+
+.feature-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.feature-card i {
+  margin-bottom: 15px;
+}
+
+/* Login Section Styles */
+.login-section {
+  margin-top: 20px;
+  padding: 120px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+  
+
+/* Card Section */
+.card {
+  margin-top: 30px;
+  padding: 30px;
+  background-color: #f9f9f9;
+  border-radius: 15px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+
+  /* Fixed Size */
+  height: 300px; /* Set a uniform height for all cards */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Ensures content is spaced evenly */
+  align-items: center; /* Center-aligns the content horizontally */
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/*  Custom CSS for the gradient background */
+.bg-gradient-primary-to-secondary {
+  background: #1e30f3;
+  background: linear-gradient(135deg, #1e30f3 0%, #e21e80 100%);
+}
+
+/* Custom CSS for the gradient text */
+.text-gradient {
+  /* background: -webkit-linear-gradient(315deg, #1e30f3 0%, #e21e80 100%); */
+  background: #2e86c1;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Testimonials Section */
+.testimonials-section {
+  padding: 50px 0;
+  background-color: #f4f4f4;
+}
+
+.testimonials-section h4 {
+  margin-bottom: 30px;
+  font-size: 2.2rem;
+  font-weight: bold;
+}
+
+.testimonial-card {
+  padding: 20px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+
+  /* Fixed Size */
+  height: 300px; /* Set a uniform height for all cards */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Ensures content is spaced evenly */
+  align-items: center; /* Center-aligns the content horizontally */
+}
+
+.testimonial-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.testimonial-card img {
+  width: 100px;
+  height: 100px;
+  margin-bottom: 15px;
+  border: 2px solid #ccc;
+}
+
+.testimonial-card h5 {
+  margin-bottom: 10px;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.testimonial-card p {
+  font-size: 1rem;
+  font-style: italic;
+  color: #757575;
+}
+
+/* Login/Register Card */
+.login-register-card {
+  margin-top: 30px;
+  padding: 30px;
+  background-color: #f9f9f9;
+  border-radius: 15px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.login-register-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Legal Pages */
+.legal-section {
+  padding: 50px 0;
+  background-color: white;
+}
+
+.legal-section h4 {
+  margin-bottom: 30px;
+  font-size: 2.2rem;
+  font-weight: bold;
+}
+
+.legal-card{
     margin-top: 30px;
     padding: 30px;
     background-color: #f9f9f9;
     border-radius: 15px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s, box-shadow 0.3s;
-  }
+}
 
-  /*  Custom CSS for the gradient background */
-  .bg-gradient-primary-to-secondary {
-    background: #1e30f3;
-    background: linear-gradient(135deg, #1e30f3 0%, #e21e80 100%);
-  }
+.legal-card-2{
+  margin-top: 30px;
+  padding: 30px;
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
 
-/* Custom CSS for the gradient text */
-  .text-gradient {
-    background: -webkit-linear-gradient(315deg, #1e30f3 0%, #e21e80 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
+.card-content p {
+  margin-bottom: 15px;
+  font-size: 1rem;
+  color: #424242;
+}
+
+.card-content h5 {
+  margin-top: 20px;
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #212121;
+  font-family: 'San Francisco', Helvetica Neue, Helvetica, Arial, and sans-serif;
+}
+
+.collapsible-header {
+  font-size: 1.3rem;
+  font-weight: bold;
+  border-radius: 15px;
+  color: #212121;
+  padding: 15px 20px;
+}
+
+.collapsible-body {
+  padding: 15px 20px;
+  font-size: 1rem;
+  color: #424242;
+  font-family: 'San Francisco', Helvetica Neue, Helvetica, Arial, and sans-serif;
+}
+
+.collapsible-header:hover {
+  background-color: #eeeeee;
+}
+
+.collapsible-header.active {
+  background-color: #e0e0e0;
+  color: #000;
+}
+
+.collapsible{
+  border-radius: 15px;
+}
+
+/* Modal Styling */
+.modal {
+  max-width: 500px;
+  border-radius: 10px;
+}
+
+.modal-content {
+  padding: 20px;
+}
+
+.modal-content h4 {
+  margin-bottom: 20px;
+  font-size: 1.8rem;
+}
+
+#search-input {
+  border-bottom: 2px solid #000;
+}
+
+#search-input:focus {
+  border-bottom: 2px solid #f57c00;
+  box-shadow: none;
+}
+
+.profile-page {
+  margin-top: 30px;
+}
+
+.profile-picture {
+  position: relative;
+}
+
+.profile-picture img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 15px;
+}
+
+/* Section Headers */
+.section h5 {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+/* Form Inputs */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="password"] {
+  border-bottom: 2px solid #000;
+}
+
+input:focus {
+  border-bottom: 2px solid #f57c00;
+  box-shadow: none;
+}
+
+/* Profile Buttons */
+.btn-profile {
+  background-color: #f57c00; /* Change background to red on hover */
+  border-radius: 50px; /* Rounded corners for pill shape */
+  padding: 0 30px; /* Extra horizontal padding */
+  font-size: 1.2rem; /* Adjust font size */
+  text-transform: none; /* Remove uppercase styling */
+  transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effects */
+}
+
+.btn-profile:hover {
+  background-color: #e65100;
+  color: red; /* Ensure text is visible on the red background */
+}
+
+/* Product Card Styling */
+.product-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin: 16px 0px 0px 0px;
+
+  /* Fixed Size */
+  height: 250px; /* Set a uniform height for all cards */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Ensures content is spaced evenly */
+  align-items: center; /* Center-aligns the content horizontally */
+}
+
+.product-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+/* Card Image */
+.product-card-image {
+  position: relative;
+  overflow: hidden;
+}
+
+.product-card-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.product-card:hover .product-card-image img {
+  transform: scale(1.1); /* Zoom effect on hover */
+}
+
+/* Title Inside Image - Centered */
+.product-card-title-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+  z-index: 2;
+  transition: opacity 0.3s ease;
+}
+
+/* Hide Title on Hover */
+.product-card:hover .product-card-title-overlay {
+  opacity: 0;
+}
+
+/* Overlay Effect */
+.product-card-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
+  color: white;
+  padding: 20px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.product-card:hover .product-card-overlay {
+  opacity: 1; /* Show overlay on hover */
+}
+
+/* Overlay Content */
+.product-card-overlay p {
+  font-size: 1rem;
+  margin-bottom: 20px;
+}
+
+.product-card-overlay .product-btn {
+  font-weight: bold;
+  background-color: white; /* Change background to red on hover */
+  border-radius: 50px; /* Rounded corners for pill shape */
+  padding: 0 30px; /* Extra horizontal padding */
+  font-size: 1.2rem; /* Adjust font size */
+  text-transform: none; /* Remove uppercase styling */
+  transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effects */
+  color: black;
+}
+
+.product-card-overlay .product-btn:hover {
+  background-color: red;
+  color: white;
+}
+
+/* Payment Styling */
+.payment-container {
+  max-width: 500px;
+  background: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+}
+
+.payment-input-field {
+  margin-bottom: 20px;
+}
+
+.payment-card-number-wrapper {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+#card-number {
+  flex: 1;
+}
+
+#generate-random {
+  background: #eee;
+  border: none;
+  border-radius: 4px;
+  padding: 6px 12px;
+  font-size: 12px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.card-company-icon {
+  width: 50px;
+  height: 30px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin-left: 10px;
+}
+
+.visa-icon {
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/4/41/Visa_Logo.png');
+}
+
+.mastercard-icon {
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg');
+}
+
+.amex-icon {
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/3/30/American_Express_logo.svg');
+}
+
+.default-icon {
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/3/39/Credit-card.svg');
+}
+
+/* Cart Styling */
+.header {
+  background-color: #007bff;
+  color: white;
+  padding: 15px 20px;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.header a {
+  color: white;
+  font-size: 16px;
+  margin-left: 15px;
+  text-decoration: none;
+}
+
+.cart-header {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  padding: 10px 0;
+  border-bottom: 2px solid #ddd;
+  color: #555;
+}
+
+.cart-header div {
+  flex: 1;
+  text-align: center;
+}
+
+.cart-header div:first-child {
+  text-align: left;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.cart-item div {
+  flex: 1;
+  text-align: center;
+}
+
+.cart-item img {
+  width: 80px;
+  height: 80px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.cart-item-details {
+  flex: 1;
+  margin-left: 15px;
+}
+
+.cart-item-quantity {
+  display: flex;
+  align-items: center;
+}
+
+.cart-item-quantity .material-icons {
+  cursor: pointer;
+  color: #007bff;
+  font-size: 24px;
+  margin: 0 5px;
+}
+
+.total-container {
+  margin-top: 20px;
+  text-align: right;
+}
+
+.total-container h5 {
+  font-weight: bold;
+}

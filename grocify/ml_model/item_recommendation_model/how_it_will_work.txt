@@ -1,0 +1,53 @@
+Pre-Trained Model:
+
+The k-NN model (item_recommendation_knn_model.joblib) is pre-trained and saved. It can be directly loaded without retraining.
+Feature Matrix:
+
+The feature_matrix.npy is the exact representation of your product features, used for recommendation queries.
+The matrix is lightweight and efficient for querying similarity.
+Python Script (recommendation.py):
+
+This script is built to:
+Load the model and matrix.
+Take user input (product index and number of recommendations).
+Return recommendations in JSON format, which can be consumed by your Node.js backend.
+Node.js Integration:
+
+The Python script is called from Node.js using child_process.
+The output is parsed and returned to the frontend, ensuring seamless integration.
+
+
+
+
+
+To make sure everything works 100%:
+
+File Locations:
+
+Ensure all required files (joblib, npy, csv, etc.) are in the correct relative paths accessible by the Python script.
+Dependencies:
+
+Python:
+Install necessary libraries using:
+bash
+Copy code
+pip install numpy pandas joblib scikit-learn flask
+Use requirements.txt to document these dependencies.
+Node.js:
+Install the required libraries using:
+bash
+Copy code
+npm install axios express
+Environment Consistency:
+
+Test locally with the same environment setup as your backend server.
+If deploying to a server, ensure Python and Node.js are configured with the same versions and dependencies.
+Product Metadata:
+
+Confirm that merged_data.csv is accurate and includes all relevant product information (e.g., names, categories, prices).
+Testing:
+
+Thoroughly test each part independently:
+Run recommendation.py from the terminal with sample inputs.
+Test the Python script integration with Node.js.
+Test the complete backend API with Postman or curl.

@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Register | Grocify</title>
-    <!-- Favicon-->
-    <link rel="icon" type="image/x-icon" href="assets/icons.png" />
+  <title>Grocify</title>
+  <!-- Favicon-->
+  <link rel="icon" type="image/x-icon" href="assets/icons.png" />
   <!-- Materialize CSS Framework -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -26,6 +26,9 @@
         <ul id="nav-mobile" class="right hide-on-med-and-down">
             <li><a href="/" class="black-text">Home</a></li>
             <li><a href="/#about-us" class="black-text">About Us</a></li>
+            <li><a href="pricecheck.html" class="black-text">Price Check</a></li>
+            <li><a href="recommendation.html" class="black-text">Recommendation</a></li>
+            <li><a href="prediction.html" class="black-text">Prediction</a></li>
             <li><a href="contact.html" class="black-text">Contact</a></li>
             <li><a href="login.html" class="black-text">Log In</a></li>
             <li><a href="register.html" class="btn">Sign Up</a></li>
@@ -61,42 +64,89 @@
     <li><a href="#search-modal" class="modal-trigger black-text">Search</a></li>
   </ul>
 
-  <!-- SignUp Section -->
-  <div class="section no-pad-bot" id="SignUp">
-    <div class="container">
-      
-      <div class="login-register-card">
-        <div class="card-content">
-            <div class="text-center mb-5">
-                <h1>Sign Up</h1>
-                <p class="lead fw-normal text-muted mb-0">
-                    Join Now – Start Saving on Groceries Today!
-                </p>
-                <div class="col col-xl-10">
-                    <div class="col-md-6 col-lg-5 d-none d-md-block"></div>
-                        <form id="registerForm">
-                            <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Sign Up your account</h5>
-                            <div class="form-outline mb-4">
-                                <label class="form-label" for="username">Username</label>
-                                <input type="text" id="username" name="username" class="form-control form-control-lg" required />
-                            </div>
-                            <div class="form-outline mb-4">
-                                <label class="form-label" for="email">Email address</label>
-                                <input type="email" id="email" name="email" class="form-control form-control-lg" required />
-                            </div>
-                            <div class="form-outline mb-4">
-                                <label class="form-label" for="password">Password</label>
-                                <input type="password" id="password" name="password" class="form-control form-control-lg" required />
-                            </div>
-                            <div class="pt-1 mb-4">
-                                <button type="submit" class="btn-large waves-effect waves-light black white-text">Sign Up</button>
-                            </div>
-                            <p class="mb-5 pb-lg-2" style="color: #393f81;">Have an account? <a href="login.html" style="color: #393f81;">Login here</a></p>
-                            <a href="termsofuse.html" class="small text-muted">Terms of use.</a>
-                            <a href="privacy.html" class="small text-muted">Privacy policy</a>
-                        </form>
-                    </div> 
-                </div>
+  <!-- Hero Section -->
+  <div class="hero-section no-pad-bot" id="payment">
+    <div class="container row">
+      <!-- left hand side - payment -->
+      <div class="col s12 m9">
+        <div class="payment-container">
+          <h4 class="center-align">Check Out</h4>
+          <form id="payment-form">
+            <!-- Name Field -->
+            <div class="input-field">
+              <input id="name" type="text" required>
+              <label for="name">Name</label>
+            </div>
+
+            <!-- Card Number Field -->
+            <div class="input-field payment-card-number-wrapper">
+              <input id="payment-card-number" type="text" maxlength="16" required placeholder="Card Number">
+              <div id="payment-card-company-icon" class="card-company-icon default-icon"></div>
+            </div>
+
+            <!-- Expiration Date -->
+            <div class="input-field">
+              <input id="expiry-date" type="text" placeholder="MM/YY" maxlength="5" required>
+              <label for="expiry-date">Expiration (mm/yy)</label>
+            </div>
+
+            <!-- Security Code -->
+            <div class="input-field">
+              <input id="security-code" type="text" maxlength="3" required>
+              <label for="security-code">Security Code</label>
+            </div>
+
+            <!-- Submit Button -->
+            <button class="btn waves-effect waves-light full-width" type="submit">Pay Now</button>
+            <button id="generate-random" type="button">Generate Random</button>
+            <br>
+            <br>
+            <a href="cart.html" class="btn waves-effect waves-light full-width">Back to Cart</a>
+            <br>
+            <br>
+            <a href="https://www.paypal.com/au/home" class="btn waves-effect waves-light full-width blue">Pay with PayPal</a>
+          </form> 
+        </div>
+      </div>
+
+      <!-- right hand side - summary -->
+      <div class="col s3 m3">
+        <h4 class="center-align">Summary</h4>
+        <div class="payment-container">
+          <div class="card-content">
+            <table>
+              <thead>
+                <tr>
+                  <th>Item</th>
+                  <th>Price</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Item 1</td>
+                  <td>$10.00</td>
+                </tr>
+                <tr>
+                  <td>Item 2</td>
+                  <td>$20.00</td>
+                </tr>
+                <tr>
+                  <td>Item 3</td>
+                  <td>$30.00</td>
+                </tr>
+                <tr>
+                  <td>Item 4</td>
+                  <td>$40.00</td>
+                </tr>
+                <tr>
+                  <td>Item 5</td>
+                  <td>$50.00</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="card-action">
+            <p>Total: $150.00</p>
           </div>
         </div>
       </div>
@@ -109,7 +159,7 @@
       <div class="row">
         <div class="col s12">
           <h5 class="white-text"></h5>
-          <a href="/ ">Home</a>
+            <a href="/ ">Home</a>
             <span class="mx-1">&middot;</span>
             <a href="/#about-us">About Us</a>
             <span class="mx-1">&middot;</span>
@@ -128,7 +178,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   <!-- Custom JS -->
   <script src="js/scripts.js"></script>
-  <script src="js/register.js"></script>
+  <script src="js/checkout.js"></script>
 
 </body>
 </html>
