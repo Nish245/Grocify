@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Bank Account</title>
+    <!-- Materialize CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav>
+        <div class="nav-wrapper">
+            <a href="#" class="brand-logo left">Grocify</a>
+            <ul id="nav-mobile" class="right">
+                <li><a href="payment.html">Add Card</a></li>
+                <li><a href="saved_cards.html">Saved Cards</a></li>
+                <li><a href="add_bank_account.html">Add Bank Account</a></li>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Price Check</a></li>
+                <li><a href="#">Recommendation</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#" class="btn red lighten-1">Sign Up</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h4>Add Bank Account</h4>
+        <form id="bankAccountForm">
+            <div class="input-field">
+                <input id="accountHolderName" type="text" placeholder="Account Holder Name" required>
+                <label for="accountHolderName">Account Holder Name</label>
+            </div>
+            <div class="input-field">
+                <input id="bsb" type="text" placeholder="BSB (6 Digits)" maxlength="6" required>
+                <label for="bsb">BSB</label>
+            </div>
+            <div class="input-field">
+                <input id="accountNumber" type="text" placeholder="Account Number" maxlength="10" required>
+                <label for="accountNumber">Account Number</label>
+            </div>
+            <div class="input-field">
+                <input id="bankName" type="text" placeholder="Bank Name" readonly>
+                <label for="bankName">Bank Name</label>
+            </div>
+            <label>
+                <input type="checkbox" id="defaultBank">
+                <span>Set as Default Bank Account</span>
+            </label>
+            <br><br>
+            <button type="submit" class="btn waves-effect waves-light">Add Bank Account</button>
+        </form>
+    </div>
+
+    <footer>
+        <div>
+            <a href="#">Home</a>
+            <a href="#">About Us</a>
+            <a href="#">Privacy</a>
+            <a href="#">Terms</a>
+            <a href="#">Contact</a>
+        </div>
+        <p>© 2025 Grocify. All rights reserved.</p>
+    </footer>
+
+    <!-- Materialize JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <!-- Custom JS -->
+    <script src="js/add_bank_account.js"></script>
+</body>
+</html>

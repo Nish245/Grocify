@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Payment Method</title>
+    <!-- Materialize CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav>
+        <div class="nav-wrapper">
+            <a href="#" class="brand-logo left">Grocify</a>
+            <ul id="nav-mobile" class="right">
+                <li><a href="saved_cards.html">Saved Cards</a></li>
+                <li><a href="payment.html">Add Card</a></li>
+                <li><a href="add_bank_account.html">Add Bank Account</a></li>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Price Check</a></li>
+                <li><a href="#">Recommendation</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#" class="btn red lighten-1">Sign Up</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h4>Add Payment Method</h4>
+
+        <!-- Card Preview -->
+        <div class="card-preview">
+            <div class="card-number">**** **** **** ****</div>
+            <div class="card-expiry">MM/YY</div>
+            <img src="" alt="Card Logo" id="cardLogo" style="display: none;">
+        </div>
+
+        <form id="paymentForm">
+            <div class="input-field">
+                <select id="paymentType" required>
+                    <option value="" disabled selected>Choose Payment Type</option>
+                    <option value="credit">Credit Card</option>
+                    <option value="debit">Debit Card</option>
+                    <option value="paypal">PayPal</option>
+                </select>
+                <label for="paymentType">Payment Type</label>
+            </div>
+
+            <!-- Card Fields -->
+            <div class="input-field card-fields">
+                <input id="cardNumber" type="text" placeholder="Card Number" maxlength="19">
+                <label for="cardNumber">Card Number</label>
+            </div>
+            <div class="input-field card-fields">
+                <input id="expiryDate" type="text" placeholder="MM/YY" maxlength="5">
+                <label for="expiryDate">Expiry Date</label>
+            </div>
+            <div class="input-field card-fields">
+                <input id="cvv" type="password" placeholder="CVV" maxlength="3">
+                <label for="cvv">CVV</label>
+            </div>
+
+            <!-- PayPal Field -->
+            <div class="input-field" id="paypalField" style="display: none;">
+                <input id="paypalEmail" type="email" placeholder="PayPal Email">
+                <label for="paypalEmail">PayPal Email</label>
+            </div>
+
+            <div class="input-field">
+                <input id="nickname" type="text" placeholder="Card Nickname">
+                <label for="nickname">Card Nickname</label>
+            </div>
+            <label>
+                <input type="checkbox" id="defaultCard">
+                <span>Set as Default Payment Method</span>
+            </label>
+            <br><br>
+            <button type="submit" class="btn waves-effect waves-light">Add Payment Method</button>
+        </form>
+    </div>
+
+    <footer>
+        <div>
+            <a href="#">Home</a>
+            <a href="#">About Us</a>
+            <a href="#">Privacy</a>
+            <a href="#">Terms</a>
+            <a href="#">Contact</a>
+        </div>
+        <p>© 2025 Grocify. All rights reserved.</p>
+    </footer>
+
+    <!-- Materialize JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <!-- Custom JS -->
+    <script src="js/script.js"></script>
+</body>
+</html>
