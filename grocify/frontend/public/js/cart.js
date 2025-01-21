@@ -1,8 +1,8 @@
 // Function used in cart.html:
 const cartItems = [
-    { id: 1, name: "Snack A", price: 10.99, quantity: 1, image: "https://via.placeholder.com/80" },
-    { id: 2, name: "Snack B", price: 8.49, quantity: 2, image: "https://via.placeholder.com/80" },
-    { id: 3, name: "Snack C", price: 5.99, quantity: 1, image: "https://via.placeholder.com/80" },
+    { id: 1, name: "Oreo Original Cookies Family Pack 358g", price: 4.5, quantity: 1, image: "https://assets.woolworths.com.au/images/1005/319332.jpg?impolicy=wowsmkqiema&w=1200&h=1200" },
+    { id: 2, name: "Whittaker's Block Creamy Milk 33% Cocoa 250g", price: 6.8, quantity: 2, image: "https://assets.woolworths.com.au/images/1005/266869.jpg?impolicy=wowsmkqiema&w=600&h=600" },
+    { id: 3, name: "Arnott's Shapes Pizza Cracker Biscuits 190g", price: 3, quantity: 1, image: "https://assets.woolworths.com.au/images/1005/515173.jpg?impolicy=wowsmkqiema&w=260&h=260" },
   ];
 
   const cartItemsContainer = document.getElementById("cart-header");
@@ -21,10 +21,11 @@ const cartItems = [
       const cartItemElement = document.createElement("div");
       cartItemElement.classList.add("cart-item");
 
+      // <img src="${item.image}" alt="${item.name}">
       cartItemElement.innerHTML = `
         <div class="cart-item">
           <div>
-            <img src="${item.image}" alt="${item.name}">
+            <img src="${item.image}]" alt="${item.name}">
             <h6>${item.name}</h6>
           </div>
           <div>$${item.price.toFixed(2)}</div>
@@ -72,5 +73,7 @@ const cartItems = [
 
   // Checkout button click event
   document.getElementById("checkout-btn").addEventListener("click", () => {
-    alert("Checkout not implemented yet!");
+    // alert("Checkout not implemented yet!");
+    // temp redirection
+    window.location.href = 'checkout.html';
   });
