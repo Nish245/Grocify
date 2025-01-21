@@ -81,7 +81,7 @@
             <div class="col s12 m6 l3">
               <div class="product-card">
                 <div class="product-card-image">
-                  <img src="assets/apple.jpg" alt="${product.name}"> // temp image
+                  <img src="assets/broccoli.jpg" alt="${product.name}"> // temp image
                   <div class="product-card-title-overlay">
                     <h5>${product.name}</h5>
                   </div>
