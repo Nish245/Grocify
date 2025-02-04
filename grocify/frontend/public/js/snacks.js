@@ -1,155 +1,172 @@
-// Fucntion used in Snacks.js
+const csvFilePath = "/assets/csv/products-2.csv";
 
-// Add Item to Cart Functions
-function addToCart(productName) {
-    // Get the current cart items from localStorage or initialize it as an empty array
-    let cart = JSON.parse(localStorage.getItem('cart')) || [];
-    // Add the new product to the cart
-    cart.push(productName);
-    // Save the updated cart back to localStorage
-    localStorage.setItem('cart', JSON.stringify(cart));
+async function loadSnacksProducts() {
+    try {
+        const response = await fetch(csvFilePath);
+        if (!response.ok) throw new Error("Failed to load CSV");
+        const text = await response.text();
+        const snacksProducts = parseCSV(text);
+
+        // Store all products globally for filtering
+        localStorage.setItem("allProducts", JSON.stringify(snacksProducts));
+
+        populateTypeFilters(snacksProducts);
+        initializePriceSlider(snacksProducts); // Initialize price range
+        displaySnacksProducts(snacksProducts);
+    } catch (error) {
+        console.error("Error fetching CSV:", error);
+    }
 }
 
-//   <!-- filer function -->
+function parseCSV(csv) {
+    const rows = csv.split("\n").map(row => row.split(","));
+    const headers = rows[0].map(header => header.trim());
+    const snacksProducts = [];
 
-  document.addEventListener('DOMContentLoaded', () => {
-    const categoryFilters = document.querySelectorAll('.category-filter');
-    const priceFilter = document.getElementById('price-filter');
-    const priceDisplay = document.getElementById('price-display');
-    const productList = document.getElementById('product-list');
+    for (let i = 1; i < rows.length; i++) {
+        let row = rows[i].map(value => value.trim() || "N/A");
 
-    // Update price display dynamically
-    priceFilter.addEventListener('input', () => {
-      priceDisplay.textContent = `Up to $${priceFilter.value}`;
-      filterProducts();
+        if (row[headers.indexOf("Category")] === "Snacks") {
+            let prices = {
+                Aldi: parseFloat(row[headers.indexOf("Price_Aldi")]) || Infinity,
+                Coles: parseFloat(row[headers.indexOf("Price_Coles")]) || Infinity,
+                IGA: parseFloat(row[headers.indexOf("Price_IGA")]) || Infinity,
+                Woolworths: parseFloat(row[headers.indexOf("Price_Woolworths")]) || Infinity
+            };
+
+            let cheapestStore = "N/A";
+            let cheapestPrice = Infinity;
+
+            for (let store in prices) {
+                if (prices[store] < cheapestPrice) {
+                    cheapestPrice = prices[store];
+                    cheapestStore = store;
+                }
+            }
+
+            if (cheapestPrice === Infinity) {
+                cheapestPrice = "N/A";
+                cheapestStore = "N/A";
+            }
+
+            snacksProducts.push({
+                id: i,
+                name: row[headers.indexOf("Product")],
+                type: row[headers.indexOf("Type")],
+                cheapestPrice: cheapestPrice,
+                cheapestStore: cheapestStore,
+                averageprice: row[headers.indexOf("Average_Price")],
+                image: row[headers.indexOf("image")] !== "N/A" ? row[headers.indexOf("image")] : "https://via.placeholder.com/200?text=No+Image"
+            });
+        }
+    }
+
+    return snacksProducts;
+}
+
+// Populate sidebar filters dynamically
+function populateTypeFilters(snacksProducts) {
+    const typeContainer = document.getElementById("type-filters");
+    if (!typeContainer) {
+        console.error("Error: #type-filters element not found in the HTML.");
+        return;
+    }
+
+    typeContainer.innerHTML = ""; // Clear previous filters
+
+    const uniqueTypes = [...new Set(snacksProducts.map(product => product.type))];
+
+    uniqueTypes.forEach(type => {
+        const filterItem = document.createElement("label");
+        filterItem.innerHTML = `
+            <input type="checkbox" class="type-checkbox" value="${type}" onchange="applyFilters()">
+            <span>${type}</span>
+        `;
+        typeContainer.appendChild(filterItem);
     });
+}
 
-    // Filter products when a checkbox is clicked
-    categoryFilters.forEach((checkbox) => {
-      checkbox.addEventListener('change', filterProducts);
+// Initialize price range slider
+function initializePriceSlider(snacksProducts) {
+    const priceSlider = document.getElementById("price-slider");
+    const priceDisplay = document.getElementById("price-display");
+
+    if (!priceSlider || !priceDisplay) {
+        console.error("Error: Price slider or display element not found in the HTML.");
+        return;
+    }
+
+    const maxPrice = Math.max(...snacksProducts.map(product => product.cheapestPrice === "N/A" ? 0 : product.cheapestPrice));
+
+    priceSlider.max = Math.ceil(maxPrice);
+    priceSlider.value = Math.ceil(maxPrice); // Default to max value
+    priceDisplay.textContent = `Up to $${priceSlider.value}`;
+
+    priceSlider.addEventListener("input", () => {
+        priceDisplay.textContent = `Up to $${priceSlider.value}`;
+        applyFilters();
     });
+}
 
-    function filterProducts() {
-      const selectedCategories = Array.from(categoryFilters)
-        .filter((checkbox) => checkbox.checked)
-        .map((checkbox) => checkbox.value);
-      const maxPrice = parseInt(priceFilter.value, 10);
 
-      // Filter logic (mock data used as example)
-      const allProducts = [
-        { name: 'Avocado Toast', price: 10, category: 'Toast',  description: 'Fresh baked bread with avocado spread' },
-        { name: 'Banana Bread', price: 15, category: 'Bread', description: 'Freshly baked banana bread' },
-        { name: 'Orange Juice', price: 5, category: 'Juice', description: 'Freshly squeezed orange juice' },
-        { name: 'Kiwi Smoothie', price: 8, category: 'Smoothie', description: 'Fresh kiwi blended with yogurt' },
-        { name: 'Apple Pie', price: 20, category: 'Pie', description: 'Homemade apple pie with a flaky crust' },
-        { name: 'Banana Muffin', price: 12, category: 'Muffin', description: 'Freshly baked banana muffin' },
-        { name: 'Orange Sorbet', price: 7, category: 'Sorbet', description: 'Refreshing orange sorbet' },
-        { name: 'Fruit Salad', price: 9, category: 'Salad', description: 'Fresh fruits salad with mixed greens' },
+function applyFilters() {
+    let selectedTypes = Array.from(document.querySelectorAll(".type-checkbox:checked")).map(cb => cb.value);
+    let maxPrice = parseFloat(document.getElementById("price-slider").value);
     
-      ];
+    // Get all products
+    let allProducts = JSON.parse(localStorage.getItem("allProducts")) || [];
 
-      const filteredProducts = allProducts.filter((product) => {
-        const matchesCategory =
-          selectedCategories.length === 0 ||
-          selectedCategories.includes(product.category);
-        const matchesPrice = product.price <= maxPrice;
-        return matchesCategory && matchesPrice;
-      });
+    // Apply filters
+    let filteredProducts = allProducts.filter(product => {
+        const matchesType = selectedTypes.length === 0 || selectedTypes.includes(product.type);
+        const matchesPrice = product.cheapestPrice !== "N/A" && product.cheapestPrice <= maxPrice;
+        return matchesType && matchesPrice;
+    });
 
-      // Update UI
-      renderProducts(filteredProducts);
-    }
+    displaySnacksProducts(filteredProducts);
+}
 
-
-        //Please replace the following line if you have the images
-      //<img src="assets/${product.name.toLowerCase()}.jpg" alt="${product.name}">
-    function renderProducts(products) {
-      productList.innerHTML = products
-        .map(
-          (product) => `
-            <div class="col s12 m6 l3">
-              <div class="product-card">
+function displaySnacksProducts(snacksProducts) {
+    const productContainer = document.getElementById("product-list");
+    productContainer.innerHTML = snacksProducts.map(product => `
+        <div class="col s12 m6 l6">
+            <div class="product-card">
                 <div class="product-card-image">
-                  <img src="assets/snacks.jpg" alt="${product.name}">
-                  <div class="product-card-title-overlay">
-                    <h5>${product.name}</h5>
-                  </div>
-                  <div class="product-card-overlay">
-                    <h5 class="left-align">${product.name}</h5>
-                    <p>${product.category}</p>
-                    <p>${product.description}</p>
-                    <p>Price: $${product.price}</p>
-                    <div class="center">
-                      <a href="#" class="btn" onclick="addToCart('${product.name}')">Add to Cart</a>
+                    <img src="${product.image}" alt="${product.name}">
+                    <div class="product-card-title-overlay">
+                        <h5 class="card-title">${product.name}</h5>
                     </div>
-                  </div>
-                </div>
-              </div>
-            </div>`
-        )
-        .join('');
-    }
-
-    // Initial render
-    filterProducts();
-  });
-
-    // Add Snack Script
-    document.addEventListener('DOMContentLoaded', () => {
-      const productList = document.getElementById('product-list');
-      const addSnacksForm = document.getElementById('add-snacks-form');
-
-        //Please replace the following line if you have the images
-      //<img src="assets/${product.name.toLowerCase()}.jpg" alt="${product.name}">
-
-      // Function to render a product
-      const renderProduct = (product) => {
-        const productCard = document.createElement('div');
-        productCard.className = 'col s12 m6 l3';
-        productCard.innerHTML = `
-              <div class="product-card">
-                <div class="product-card-image">
-                  <img src="assets/apple.jpg" alt="${product.name}">
-                  <div class="product-card-title-overlay">
-                    <h5>${product.name}</h5>
-                  </div>
-                  <div class="product-card-overlay">
-                    <h5 class="left-align">${product.name}</h5>
-                    <p>${product.category}</p>
-                    <p>${product.description}</p>
-                    <p>Price: $${product.price}</p>
-                    <div class="center">
-                      <a href="#" class="btn" onclick="addToCart('${product.name}')">Add to Cart</a>
+                    <div class="product-card-overlay">
+                        <h5 class="left-align">${product.name}</h5>
+                        <p>Cheapest Price: $${product.cheapestPrice} at <b>${product.cheapestStore}</b></p>
+                        <p>Average Price: $${product.averageprice}</p>
+                        <div class="center">
+                            <button class="btn" onclick="addToCart(${product.id}, '${product.name}', ${product.cheapestPrice})">Add to Cart</button>
+                        </div>
                     </div>
-                  </div>
                 </div>
-              </div>
             </div>
-        `
-        productList.appendChild(productCard);
-      };
+        </div>
+    `).join('');
+}
 
-      // Handle form submission
-    addSnacksForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const name = document.getElementById('snacks-name').value;
-        const category = document.getElementById('snacks-category').value;
-        const description = document.getElementById('snacks-description').value;
-        const price = document.getElementById('snacks-price').value;
-        const image = document.getElementById('snacks-image').value;
+function addToCart(id, name, price) {
+    if (price === "N/A") {
+        alert("This item is currently unavailable.");
+        return;
+    }
 
-        const newSnacks = { name, category, description, price, image };
-        renderProduct(newSnacks);
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-        // Reset form fields
-        addSnacksForm.reset();
-            M.toast({ html: `${name} has been added!` });
-            console.log('New Snacks added:', newSnacks);
-        });
-    });
+    let existingItem = cart.find(item => item.id === id);
+    if (existingItem) {
+        existingItem.quantity += 1;
+    } else {
+        cart.push({ id: id, name: name, price: parseFloat(price), quantity: 1 });
+    }
 
-  // Add Snack Model Initialization
-    document.addEventListener('DOMContentLoaded', function () {
-        const elems = document.querySelectorAll('select');
-        M.FormSelect.init(elems);
-    });
+    localStorage.setItem("cart", JSON.stringify(cart));
+    alert(`${name} added to cart at $${price}!`);
+}
+
+loadSnacksProducts();

@@ -1,145 +1,172 @@
-// Function used in fruits.html
+const csvFilePath = "/assets/csv/products-2.csv";
 
-// This function adds the product to the cart
-function addToCart(productName) {
-    // Get the current cart items from localStorage or initialize it as an empty array
-    let cart = JSON.parse(localStorage.getItem('cart')) || [];
-    // Add the new product to the cart
-    cart.push(productName);
-    // Save the updated cart back to localStorage
-    localStorage.setItem('cart', JSON.stringify(cart));
+async function loadFruitsProducts() {
+    try {
+        const response = await fetch(csvFilePath);
+        if (!response.ok) throw new Error("Failed to load CSV");
+        const text = await response.text();
+        const fruitsProducts = parseCSV(text);
+
+        // Store all products globally for filtering
+        localStorage.setItem("allProducts", JSON.stringify(fruitsProducts));
+
+        populateTypeFilters(fruitsProducts);
+        initializePriceSlider(fruitsProducts); // Initialize price range
+        displayFruitsProducts(fruitsProducts);
+    } catch (error) {
+        console.error("Error fetching CSV:", error);
+    }
 }
 
-//filer function
+function parseCSV(csv) {
+    const rows = csv.split("\n").map(row => row.split(","));
+    const headers = rows[0].map(header => header.trim());
+    const fruitsProducts = [];
 
-  document.addEventListener('DOMContentLoaded', () => {
-    const categoryFilters = document.querySelectorAll('.category-filter');
-    const priceFilter = document.getElementById('price-filter');
-    const priceDisplay = document.getElementById('price-display');
-    const productList = document.getElementById('product-list');
+    for (let i = 1; i < rows.length; i++) {
+        let row = rows[i].map(value => value.trim() || "N/A");
 
-    // Update price display dynamically
-    priceFilter.addEventListener('input', () => {
-      priceDisplay.textContent = `Up to $${priceFilter.value}`;
-      filterProducts();
-    });
+        if (row[headers.indexOf("Category")] === "Fruits") {
+            let prices = {
+                Aldi: parseFloat(row[headers.indexOf("Price_Aldi")]) || Infinity,
+                Coles: parseFloat(row[headers.indexOf("Price_Coles")]) || Infinity,
+                IGA: parseFloat(row[headers.indexOf("Price_IGA")]) || Infinity,
+                Woolworths: parseFloat(row[headers.indexOf("Price_Woolworths")]) || Infinity
+            };
 
-    // Filter products when a checkbox is clicked
-    categoryFilters.forEach((checkbox) => {
-      checkbox.addEventListener('change', filterProducts);
-    });
+            let cheapestStore = "N/A";
+            let cheapestPrice = Infinity;
 
-    function filterProducts() {
-      const selectedCategories = Array.from(categoryFilters)
-        .filter((checkbox) => checkbox.checked)
-        .map((checkbox) => checkbox.value);
-      const maxPrice = parseInt(priceFilter.value, 10);
+            for (let store in prices) {
+                if (prices[store] < cheapestPrice) {
+                    cheapestPrice = prices[store];
+                    cheapestStore = store;
+                }
+            }
 
-      // Filter logic (mock data used as example)
-      const allProducts = [
-        { name: 'Apple', price: 10, category: 'Apple',  description: 'Fresh Apples from Washington'},
-        { name: 'Banana', price: 5, category: 'Banana', description: 'Fresh Bananas from Ecuador'},
-        { name: 'Orange', price: 8, category: 'Orange', description: 'Fresh Oranges from Florida'},
-        { name: 'Kiwi', price: 15, category: 'Kiwi', description: 'Fresh Kiwi from New Zealand'},
-        { name: 'Kiwi', price: 10, category: 'Kiwi', description: 'Fresh Kiwi from Australia'},
-      ];
+            if (cheapestPrice === Infinity) {
+                cheapestPrice = "N/A";
+                cheapestStore = "N/A";
+            }
 
-      const filteredProducts = allProducts.filter((product) => {
-        const matchesCategory =
-          selectedCategories.length === 0 ||
-          selectedCategories.includes(product.category);
-        const matchesPrice = product.price <= maxPrice;
-        return matchesCategory && matchesPrice;
-      });
-
-      // Update UI
-      renderProducts(filteredProducts);
+            fruitsProducts.push({
+                id: i,
+                name: row[headers.indexOf("Product")],
+                type: row[headers.indexOf("Type")],
+                cheapestPrice: cheapestPrice,
+                cheapestStore: cheapestStore,
+                averageprice: row[headers.indexOf("Average_Price")],
+                image: row[headers.indexOf("image")] !== "N/A" ? row[headers.indexOf("image")] : "https://via.placeholder.com/200?text=No+Image"
+            });
+        }
     }
 
-    function renderProducts(products) {
-      productList.innerHTML = products
-        .map(
-          (product) => `
-            <div class="col s12 m6 l3">
-              <div class="product-card">
-                <div class="product-card-image">
-                  <img src="assets/${product.name.toLowerCase()}.jpg" alt="${product.name}">
-                  <div class="product-card-title-overlay">
-                    <h5>${product.name}</h5>
-                  </div>
-                  <div class="product-card-overlay">
-                    <h5 class="left-align">${product.name}</h5>
-                    <p>${product.category}</p>
-                    <p>${product.description}</p>
-                    <p>Price: $${product.price}</p>
-                    <div class="center">
-                      <a href="#" class="btn" onclick="addToCart('${product.name}')">Add to Cart</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>`
-        )
-        .join('');
+    return fruitsProducts;
+}
+
+// Populate sidebar filters dynamically
+function populateTypeFilters(fruitsProducts) {
+    const typeContainer = document.getElementById("type-filters");
+    if (!typeContainer) {
+        console.error("Error: #type-filters element not found in the HTML.");
+        return;
     }
 
-    // Initial render
-    filterProducts();
-  });
+    typeContainer.innerHTML = ""; // Clear previous filters
 
-    // Add Fruit Script
-document.addEventListener('DOMContentLoaded', () => {
-    const productList = document.getElementById('product-list');
-    const addFruitForm = document.getElementById('add-fruit-form');
+    const uniqueTypes = [...new Set(fruitsProducts.map(product => product.type))];
 
-    // Function to render a product
-    const renderProduct = (product) => {
-    const productCard = document.createElement('div');
-    productCard.className = 'col s12 m6 l3';
-    productCard.innerHTML = `
+    uniqueTypes.forEach(type => {
+        const filterItem = document.createElement("label");
+        filterItem.innerHTML = `
+            <input type="checkbox" class="type-checkbox" value="${type}" onchange="applyFilters()">
+            <span>${type}</span>
+        `;
+        typeContainer.appendChild(filterItem);
+    });
+}
+
+// Initialize price range slider
+function initializePriceSlider(fruitsProducts) {
+    const priceSlider = document.getElementById("price-slider");
+    const priceDisplay = document.getElementById("price-display");
+
+    if (!priceSlider || !priceDisplay) {
+        console.error("Error: Price slider or display element not found in the HTML.");
+        return;
+    }
+
+    const maxPrice = Math.max(...fruitsProducts.map(product => product.cheapestPrice === "N/A" ? 0 : product.cheapestPrice));
+
+    priceSlider.max = Math.ceil(maxPrice);
+    priceSlider.value = Math.ceil(maxPrice); // Default to max value
+    priceDisplay.textContent = `Up to $${priceSlider.value}`;
+
+    priceSlider.addEventListener("input", () => {
+        priceDisplay.textContent = `Up to $${priceSlider.value}`;
+        applyFilters();
+    });
+}
+
+
+function applyFilters() {
+    let selectedTypes = Array.from(document.querySelectorAll(".type-checkbox:checked")).map(cb => cb.value);
+    let maxPrice = parseFloat(document.getElementById("price-slider").value);
+    
+    // Get all products
+    let allProducts = JSON.parse(localStorage.getItem("allProducts")) || [];
+
+    // Apply filters
+    let filteredProducts = allProducts.filter(product => {
+        const matchesType = selectedTypes.length === 0 || selectedTypes.includes(product.type);
+        const matchesPrice = product.cheapestPrice !== "N/A" && product.cheapestPrice <= maxPrice;
+        return matchesType && matchesPrice;
+    });
+
+    displayFruitsProducts(filteredProducts);
+}
+
+function displayFruitsProducts(fruitsProducts) {
+    const productContainer = document.getElementById("product-list");
+    productContainer.innerHTML = fruitsProducts.map(product => `
+        <div class="col s12 m6 l6">
             <div class="product-card">
-            <div class="product-card-image">
-                <img src="assets/${product.name.toLowerCase()}.jpg" alt="${product.name}">
-                <div class="product-card-title-overlay">
-                <h5>${product.name}</h5>
+                <div class="product-card-image">
+                    <img src="${product.image}" alt="${product.name}">
+                    <div class="product-card-title-overlay">
+                        <h5 class="card-title">${product.name}</h5>
+                    </div>
+                    <div class="product-card-overlay">
+                        <h5 class="left-align">${product.name}</h5>
+                        <p>Cheapest Price: $${product.cheapestPrice} at <b>${product.cheapestStore}</b></p>
+                        <p>Average Price: $${product.averageprice}</p>
+                        <div class="center">
+                            <button class="btn" onclick="addToCart(${product.id}, '${product.name}', ${product.cheapestPrice})">Add to Cart</button>
+                        </div>
+                    </div>
                 </div>
-                <div class="product-card-overlay">
-                <h5 class="left-align">${product.name}</h5>
-                <p>${product.category}</p>
-                <p>${product.description}</p>
-                <p>Price: $${product.price}</p>
-                <div class="center">
-                    <a href="#" class="btn" onclick="addToCart('${product.name}')">Add to Cart</a>
-                </div>
-                </div>
-            </div>
             </div>
         </div>
-    `
-    productList.appendChild(productCard);
-    };
+    `).join('');
+}
 
-// Handle form submission
-    addFruitForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const name = document.getElementById('fruit-name').value;
-        const category = document.getElementById('fruit-category').value;
-        const description = document.getElementById('fruit-description').value;
-        const price = document.getElementById('fruit-price').value;
-        const image = document.getElementById('fruit-image').value;
+function addToCart(id, name, price) {
+    if (price === "N/A") {
+        alert("This item is currently unavailable.");
+        return;
+    }
 
-        const newFruit = { name, description, price, image };
-        renderProduct(newFruit);
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-        // Reset form fields
-        addFruitForm.reset();
-        M.toast({ html: `${name} has been added!` });
-        console.log('New fruit added:', newFruit);
-        });
-    });
+    let existingItem = cart.find(item => item.id === id);
+    if (existingItem) {
+        existingItem.quantity += 1;
+    } else {
+        cart.push({ id: id, name: name, price: parseFloat(price), quantity: 1 });
+    }
 
-  // Add Fruits Model Initialization
-    document.addEventListener('DOMContentLoaded', function () {
-        const elems = document.querySelectorAll('select');
-        M.FormSelect.init(elems);
-    });
+    localStorage.setItem("cart", JSON.stringify(cart));
+    alert(`${name} added to cart at $${price}!`);
+}
+
+loadFruitsProducts();
