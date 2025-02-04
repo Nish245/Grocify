@@ -11,10 +11,7 @@ function updateCart() {
 
   cartContainer.innerHTML = cart.map(item => `
       <div class="cart-item">
-          ${item.image}
             <div>${item.name}</div> 
-            <div>$${item.price.toFixed(2)}</div>
-            <div>(x${item.quantity})</div>
             <a href="${item.buyURL}" target="_blank" class="btn-small blue">Buy Now</a>
             <i class="material-icons" onclick="removeFromCart(${item.id})">close</i>
       </div>
