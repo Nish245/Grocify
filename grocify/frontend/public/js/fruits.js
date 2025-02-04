@@ -138,8 +138,6 @@ function displayFruitsProducts(fruitsProducts) {
                     </div>
                     <div class="product-card-overlay">
                         <h5 class="left-align">${product.name}</h5>
-                        <p>Cheapest Price: $${product.cheapestPrice} at <b>${product.cheapestStore}</b></p>
-                        <p>Average Price: $${product.averageprice}</p>
                         <div class="center">
                             <button class="btn" onclick="addToCart(${product.id}, '${product.name}', ${product.cheapestPrice})">Add to Cart</button>
                         </div>
