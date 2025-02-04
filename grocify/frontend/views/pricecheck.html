@@ -89,13 +89,10 @@
 
           <div class="filter-section">
               <h6>Price Range</h6>
-              <div class="input-field">
-                <input type="range" id="price-filter" min="0" max="50" step="5" />
-                <span id="price-display">Up to $50</span>
-              </div>
-              <!-- <input type="number" id="minPrice" placeholder="Min Price">
-              <input type="number" id="maxPrice" placeholder="Max Price">
-              <button onclick="applyFilters()">Apply Filters</button> -->
+              <div class="price-slider">
+                <input type="range" id="priceRange" min="0" max="100" step="1" class="price-range">
+                <span>Up to $<span id="priceValue">100</span></span>
+            </div>
           </div>
       </div>
 
