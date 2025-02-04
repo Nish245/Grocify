@@ -862,3 +862,12 @@ input:focus {
         display: block;
         margin-bottom: 5px;
     }
+
+    .price-slider {
+      display: flex;
+      flex-direction: column;
+  }
+
+  .price-range {
+      width: 100%;
+  }
