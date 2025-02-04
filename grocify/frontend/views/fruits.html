@@ -26,7 +26,7 @@
         <ul id="nav-mobile" class="right hide-on-med-and-down">
             <li><a href="/" class="black-text">Home</a></li>
             <li><a href="/#about-us" class="black-text">About Us</a></li>
-            <li><a href="#our-products" class="black-text">Our Products</a></li>
+            <li><a href="/#our-products" class="black-text">Our Products</a></li>
             <!-- <li><a href="pricecheck.html" class="black-text">Price Check</a></li>
             <li><a href="recommendation.html" class="black-text">Recommendation</a></li>
             <li><a href="prediction.html" class="black-text">Prediction</a></li> -->
@@ -55,14 +55,16 @@
 
   <!-- Mobile Menu -->
   <ul class="sidenav" id="mobile-menu">
-    <li><a href="/ " class="black-text">Home</a></li>
-    <li><a href="#about-us" class="black-text">About Us</a></li>
-    <!-- <li><a href="pricecheck.html" class="black-text">Price Check</a></li>
-    <li><a href="recommendation.html" class="black-text">Recommendation</a></li>
-    <li><a href="prediction.html" class="black-text">Prediction</a></li> -->
-    <li><a href="contact.html" class="black-text">Contact</a></li>
-    <li><a href="register.html" class="black-text">Sign Up</a></li>
-    <li><a href="#search-modal" class="modal-trigger black-text">Search</a></li>
+    <li><a href="/" class="black-text">Home</a></li>
+            <li><a href="/#about-us" class="black-text">About Us</a></li>
+            <li><a href="/#our-products" class="black-text">Our Products</a></li>
+            <!-- <li><a href="pricecheck.html" class="black-text">Price Check</a></li>
+            <li><a href="recommendation.html" class="black-text">Recommendation</a></li>
+            <li><a href="prediction.html" class="black-text">Prediction</a></li> -->
+            <li><a href="login.html" class="black-text">Log In</a></li>
+            <li><a href="register.html" class="btn">Sign Up</a></li>
+            <li><a href="#search-modal" class="modal-trigger black-text"><i class="material-icons">search</i></a></li>
+            <li><a href="cart.html" class="black-text"><i class="material-icons">shopping_cart</i></a></li>
   </ul>
 
   <!-- Add Modal -->
@@ -111,41 +113,24 @@
       <!-- Filter Sidebar -->
       <div class="col s12 m3">
         <div id="filter-sidebar">
-          <h5 class="text-gradient">Filter Products</h5>
-          
-          <!-- Filter by Category -->
-          <h6 class="text-gradient">Categories</h6>
-          <p>
-            <label>
-              <input type="checkbox" class="category-filter" value="Apple" />
-              <span>Apples</span>
-            </label>
-          </p>
-          <p>
-            <label>
-              <input type="checkbox" class="category-filter" value="Banana" />
-              <span>Bananas</span>
-            </label>
-          </p>
-          <p>
-            <label>
-              <input type="checkbox" class="category-filter" value="Orange" />
-              <span>Oranges</span>
-            </label>
-          </p>
-          <p>
-            <label>
-              <input type="checkbox" class="category-filter" value="Kiwi" />
-              <span>Kiwi</span>
-            </label>
-          </p>
+          <!-- <div class="filter-section"> -->
+            <h5 class="text-gradient">Filter Products</h5>
+            <h6>Category</h6>
+            <div class="category-list" id="type-filters"></div>
+            <!-- <div class="" id="categoryFilters"></div> -->
 
-          <!-- Filter by Price -->
-          <h6>Price Range</h6>
-          <div class="input-field">
-            <input type="range" id="price-filter" min="0" max="50" step="5" />
-            <span id="price-display">Up to $50</span>
-          </div>
+            <!-- Sub-filter for Fruit Types (Initially Hidden) -->
+            <div class="sidebar sub-filter" id="fruitTypeFilter">
+                <h6>Fruit Type</h6>
+                <div id="fruitTypes"></div>
+            </div>
+
+            <div class="filter-section">
+              <h6>Filter by Price</h6>
+              <input type="range" id="price-slider" min="0" step="0.5">
+              <p>Max Price: <span id="price-display">$0</span></p>
+            </div>
+          <!-- </div> -->
         </div>
       </div>
 
