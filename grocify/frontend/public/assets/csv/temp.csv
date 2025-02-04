@@ -1,0 +1,7 @@
+Product,Category,Type,Price_Aldi,ppu_Aldi,Category_Aldi,Product_URL_Aldi,Price_Coles,ppu_Coles,Category_Coles,Product_URL_Coles,Price_IGA,ppu_IGA,Category_IGA,Product_URL_IGA,Price_Woolworths,ppu_Woolworths,Category_Woolworths,Product_URL_Woolworths,Average_Price
+Whole Milk,Milk,Dairy,2.99,1.00,Milk,https://aldi.com/milk,3.49,1.20,Milk,https://coles.com/milk,3.79,1.30,Milk,https://iga.com/milk,3.99,1.40,Milk,https://woolworths.com/milk,3.56
+Almond Milk,Milk,Plant-Based,3.99,1.50,Milk,https://aldi.com/almondmilk,4.29,1.60,Milk,https://coles.com/almondmilk,4.49,1.70,Milk,https://iga.com/almondmilk,4.79,1.80,Milk,https://woolworths.com/almondmilk,4.39
+Soy Milk,Milk,Plant-Based,3.49,1.30,Milk,https://aldi.com/soymilk,3.79,1.40,Milk,https://coles.com/soymilk,3.99,1.50,Milk,https://iga.com/soymilk,4.19,1.60,Milk,https://woolworths.com/soymilk,3.89
+Oat Milk,Milk,Plant-Based,4.29,1.80,Milk,https://aldi.com/oatmilk,4.59,1.90,Milk,https://coles.com/oatmilk,4.79,2.00,Milk,https://iga.com/oatmilk,4.99,2.10,Milk,https://woolworths.com/oatmilk,4.66
+Lactose-Free Milk,Milk,Dairy-Free,3.79,1.40,Milk,https://aldi.com/lactosefree,4.19,1.50,Milk,https://coles.com/lactosefree,4.39,1.60,Milk,https://iga.com/lactosefree,4.69,1.70,Milk,https://woolworths.com/lactosefree,4.25
+Goat Milk,Milk,Specialty,5.99,2.50,Milk,https://aldi.com/goatmilk,6.29,2.60,Milk,https://coles.com/goatmilk,6.49,2.70,Milk,https://iga.com/goatmilk,6.79,2.80,Milk,https://woolworths.com/goatmilk,6.39
