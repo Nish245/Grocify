@@ -12,6 +12,25 @@
   <!-- Custom CSS -->
   <link rel="stylesheet" href="css/temp2.css">
 </head>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+          anchor.addEventListener("click", function (e) {
+              e.preventDefault();
+              const targetId = this.getAttribute("href").substring(1);
+              const targetElement = document.getElementById(targetId);
+              
+              if (targetElement) {
+                  window.scrollTo({
+                      top: targetElement.offsetTop - 70, // Adjust offset if needed
+                      behavior: "smooth"
+                  });
+              }
+          });
+      });
+  });
+</script>
+
 <body>
 
   <!-- Navbar -->
@@ -26,9 +45,10 @@
         <ul id="nav-mobile" class="right hide-on-med-and-down">
             <li><a href="/" class="black-text">Home</a></li>
             <li><a href="/#about-us" class="black-text">About Us</a></li>
-            <li><a href="pricecheck.html" class="black-text">Price Check</a></li>
+            <li><a href="#our-products" class="black-text">Our Products</a></li>
+            <!-- <li><a href="pricecheck.html" class="black-text">Price Check</a></li>
             <li><a href="recommendation.html" class="black-text">Recommendation</a></li>
-            <li><a href="prediction.html" class="black-text">Prediction</a></li>
+            <li><a href="prediction.html" class="black-text">Prediction</a></li> -->
             <li><a href="contact.html" class="black-text">Contact</a></li>
             <li><a href="login.html" class="black-text">Log In</a></li>
             <li><a href="register.html" class="btn">Sign Up</a></li>
@@ -62,9 +82,9 @@
     <li><a href="#search-modal" class="modal-trigger black-text">Search</a></li>
     <li><div class="divider"></div></li>
     <li><a class="subheader">Services</a></li>
-    <li><a href="pricecheck.html" class="black-text">Price Check</a></li>
+    <!-- <li><a href="pricecheck.html" class="black-text">Price Check</a></li>
     <li><a href="recommendation.html" class="black-text">Recommendation</a></li>
-    <li><a href="prediction.html" class="black-text">Prediction</a></li>
+    <li><a href="prediction.html" class="black-text">Prediction</a></li> -->
     <li><div class="divider"></div></li>
     <li><a class="subheader">Categories</a></li>
     <li><a href="fruits.html" class="black-text">Fruits</a></li>
@@ -244,7 +264,7 @@
       <h4 class="center text-gradient">What Our Customers Say</h4>
       <div class="row">
         <!-- Testimonial 1 -->
-        <div class="col s12 m6 l4">
+        <div class="col s12 m4 l4">
           <div class="testimonial-card center">
             <img src="assets/avatar1.png" alt="Customer 1" class="circle responsive-img">
             <h5>Sarah, College Student</h5>
@@ -252,7 +272,7 @@
           </div>
         </div>
         <!-- Testimonial 2 -->
-        <div class="col s12 m6 l4">
+        <div class="col s12 m4 l4">
           <div class="testimonial-card center">
             <img src="assets/avatar2.png" alt="Customer 2" class="circle responsive-img">
             <h5>Sarah, College Student</h5>
@@ -260,7 +280,7 @@
           </div>
         </div>
         <!-- Testimonial 3 -->
-        <div class="col s12 m6 l4">
+        <div class="col s12 m4 l4">
           <div class="testimonial-card center">
             <img src="assets/avatar3.png" alt="Customer 3" class="circle responsive-img">
             <h5>Emily Brown</h5>
@@ -278,7 +298,7 @@
       <h4 class="center text-gradient">Features</h4>
       <div class="row">
         <!-- Feature 1 -->
-        <div class="col s12 m6 l4">
+        <div class="col s12 m4 l4">
           <div class="feature-card center">
             <i class="material-icons large red-text">trending_down</i>
             <h5>Save</h5>
@@ -286,7 +306,7 @@
           </div>
         </div>
         <!-- Feature 2 -->
-        <div class="col s12 m6 l4">
+        <div class="col s12 m4 l4">
           <div class="feature-card center">
             <i class="material-icons large blue-text">compare</i>
             <h5>Compare</h5>
@@ -294,7 +314,7 @@
           </div>
         </div>
         <!-- Feature 3 -->
-        <div class="col s12 m6 l4">
+        <div class="col s12 m4 l4">
           <div class="feature-card center">
             <i class="material-icons large green-text">search</i>
             <h5>Search</h5>
@@ -352,6 +372,23 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   <!-- Custom JS -->
   <script src="js/scripts.js"></script>
+
+  <!-- Smooth Scrolling Script (Newly Added) -->
+  <script>
+    document.querySelectorAll('a[href^="/#"], a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute("href").replace("/", "").substring(1);
+            const targetElement = document.getElementById(targetId);
+            if (targetElement) {
+                window.scrollTo({
+                    top: targetElement.offsetTop - 50,
+                    behavior: "smooth"
+                });
+            }
+        });
+    });
+  </script>
 
   <script>
     const slider = document.getElementById('slider');
