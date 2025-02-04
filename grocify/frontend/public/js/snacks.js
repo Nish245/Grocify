@@ -56,7 +56,7 @@ function parseCSV(csv) {
                 cheapestPrice: cheapestPrice,
                 cheapestStore: cheapestStore,
                 averageprice: row[headers.indexOf("Average_Price")],
-                image: row[headers.indexOf("image")] !== "N/A" ? row[headers.indexOf("image")] : "https://via.placeholder.com/200?text=No+Image"
+                image: row[headers.indexOf("image")] !== "N/A" ? row[headers.indexOf("image")] : "/assets/snacks.jpg"
             });
         }
     }
