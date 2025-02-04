@@ -12,6 +12,9 @@ function updateCart() {
   cartContainer.innerHTML = cart.map(item => `
       <div class="cart-item">
             <div>${item.name}</div> 
+            <div>placeholder</div>
+            <div>placeholder</div>
+            <div>placeholder</div>
             <a href="${item.buyURL}" target="_blank" class="btn-small blue">Buy Now</a>
             <i class="material-icons" onclick="removeFromCart(${item.id})">close</i>
       </div>
