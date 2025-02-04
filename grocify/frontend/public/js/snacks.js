@@ -164,7 +164,7 @@ function addToCart(id, name, price) {
     }
 
     localStorage.setItem("cart", JSON.stringify(cart));
-    alert(`${name} added to cart at $${price}!`);
+    alert(`${name} added to cart!`);
 }
 
 loadSnacksProducts();
