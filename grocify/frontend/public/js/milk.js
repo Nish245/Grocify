@@ -1,4 +1,4 @@
-const csvFilePath = "/assets/csv/temp.csv";
+const csvFilePath = "/assets/csv/milk.csv";
 
         async function loadMilkProducts() {
             try {
