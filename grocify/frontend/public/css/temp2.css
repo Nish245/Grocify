@@ -871,3 +871,17 @@ input:focus {
   .price-range {
       width: 100%;
   }
+
+  /* forgot password messages */
+  #reset-password-message {
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+#reset-password-message.success {
+    color: green;
+}
+
+#reset-password-message.error {
+    color: red;
+}
