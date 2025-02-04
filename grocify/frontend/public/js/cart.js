@@ -11,13 +11,13 @@ function updateCart() {
 
   cartContainer.innerHTML = cart.map(item => `
       <div class="cart-item">
-          <span>${item.name} (x${item.quantity}) - $${(item.price * item.quantity).toFixed(2)}</span>
+          <span>${item.name} (x${item.quantity})</span>
           <button onclick="removeFromCart(${item.id})">X</button>
       </div>
   `).join('');
 
-  let total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-  cartTotal.textContent = total.toFixed(2);
+  // let total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+  // cartTotal.textContent = total.toFixed(2);
 }
 
 function removeFromCart(id) {
