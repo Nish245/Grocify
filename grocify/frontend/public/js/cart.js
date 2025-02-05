@@ -14,7 +14,7 @@ function updateCart() {
             <div>${item.name}</div>
             <div></div>
             <div></div>
-            <a href="${item.buyURL}" target="_blank" class="btn-small blue">Buy Now</a>
+            <a href="/" target="_blank" class="btn-small blue">Buy Now</a>
             <i class="material-icons" onclick="removeFromCart(${item.id})">close</i>
       </div>
   `).join('');
@@ -57,25 +57,29 @@ async function updateCartPrices() {
           productData = {
             cartProductName: cartProduct.name,
             Price: matchingProduct.Price_Coles,
-            Store: "Coles"
+            Store: "Coles",
+            url: "https://www.coles.com.au/"
           };
         } else if (matchingProduct.Price_Aldi !== null) {
           productData = {
             cartProductName: cartProduct.name,
             Price: matchingProduct.Price_Aldi,
-            Store: "Aldi"
+            Store: "Aldi",
+            url: "https://www.aldi.com.au/"
           };
         } else if (matchingProduct.Price_IGA !== null) {
           productData = {
             cartProductName: cartProduct.name,
             Price: matchingProduct.Price_IGA,
-            Store: "IGA"
+            Store: "IGA",
+            url: "https://www.iga.com.au/"
           };
         } else if (matchingProduct.Price_Woolworths !== null) {
           productData = {
             cartProductName: cartProduct.name,
             Price: matchingProduct.Price_Woolworths,
-            Store: "Woolworths"
+            Store: "Woolworths",
+            url: "https://www.woolworths.com.au/"
           };
         }
 
@@ -102,13 +106,14 @@ async function updateCartPrices() {
 
       const productPrice = product ? product.Price : 0;
       const productStore = product ? product.Store : 'No store available';
+      const productUrl = product.url;
 
         return `
         <div class="cart-item">
           <div>${item.name}</div>
           <div>$${productPrice}</div>
           <div>${productStore}</div>
-          <a href="${item.buyURL}" target="_blank" class="btn-small blue">Buy Now</a>
+          <a href="${productUrl}" target="_blank" class="btn-small blue">Buy Now</a>
           <i class="material-icons" onclick="removeFromCart(${item.id})">close</i>
         </div>
       `;
