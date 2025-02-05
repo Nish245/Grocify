@@ -11,6 +11,7 @@ async function fetchCSV() {
         if (!response.ok) throw new Error("Failed to load CSV");
         const text = await response.text();
         parseCSV(text);
+        initializePriceSlider(); // Ensure the slider initializes properly
     } catch (error) {
         console.error("Error fetching CSV:", error);
     }
@@ -117,6 +118,37 @@ function populateMilkTypes() {
     });
 }
 
+// Initialize price range slider
+function initializePriceSlider() {
+    const priceSlider = document.getElementById("price-slider");
+    const priceDisplay = document.getElementById("price-display");
+
+    if (!priceSlider || !priceDisplay) {
+        console.error("Error: Price slider or display element not found in the HTML.");
+        return;
+    }
+
+    // Find the max price from the dataset
+    const maxPrice = Math.max(
+        ...products
+            .map(product => product.avgPrice !== "N/A" ? parseFloat(product.avgPrice) : 0)
+            .filter(price => !isNaN(price)) // Ensure valid numbers
+    );
+
+    priceSlider.max = Math.ceil(maxPrice); // Set max limit
+    priceSlider.min = 0; // Set minimum value
+    priceSlider.value = priceSlider.max; // Default value at max
+
+    priceDisplay.textContent = `Up to $${priceSlider.value}`;
+
+    priceSlider.addEventListener("input", () => {
+        priceDisplay.textContent = `Up to $${priceSlider.value}`;
+        applyFilters();
+    });
+}
+
+
+
 // Toggle Sub-Filters
 function toggleSubFilter(category) {
     document.getElementById("fruitTypeFilter").style.display =
@@ -133,15 +165,13 @@ function applyFilters() {
     let selectedCategories = Array.from(document.querySelectorAll(".category-checkbox:checked")).map(cb => cb.value);
     let selectedFruitTypes = Array.from(document.querySelectorAll(".fruit-type-checkbox:checked")).map(cb => cb.value);
     let selectedMilkTypes = Array.from(document.querySelectorAll(".milk-type-checkbox:checked")).map(cb => cb.value);
-    // let maxPrice = document.getElementById("priceRange").value;
-    // document.getElementById("priceValue").innerText = maxPrice;
+    let maxPrice = parseFloat(document.getElementById("price-slider").value); // Get selected max price
 
     let filteredProducts = products.filter(product =>
         (selectedCategories.length === 0 || selectedCategories.includes(product.category)) &&
         (selectedFruitTypes.length === 0 || selectedFruitTypes.includes(product.type)) &&
-        (selectedMilkTypes.length === 0 || selectedMilkTypes.includes(product.type)) 
-        // &&
-        // (product.avgPrice <= maxPrice || product.avgPrice === "N/A")
+        (selectedMilkTypes.length === 0 || selectedMilkTypes.includes(product.type)) &&
+        (product.avgPrice === "N/A" || (!isNaN(product.avgPrice) && parseFloat(product.avgPrice) <= maxPrice)) // Ensure price filtering
     );
 
     displayTable(filteredProducts);
