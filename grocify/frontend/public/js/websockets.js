@@ -5,39 +5,38 @@ socket.on('discountModel', async () => {
         .then(response => response.json())
         .then(data => {
             const products = data.discounted_products;
+            let randomIndex = Math.floor(Math.random() * products.length);
+            let discounted_product = products[randomIndex]
 
-            // Loop through the products and log details
-            products.forEach((product, index) => {
-            console.log(`Product ${index + 1}: ${product.Product}`);
-            console.log(`Price at Coles: ${product.Price_Coles || 'N/A'}`);
-            console.log(`Price at Aldi: ${product.Price_Aldi || 'N/A'}`);
-            console.log(`Price at IGA: ${product.Price_IGA || 'N/A'}`);
-            console.log(`Price at Woolworths: ${product.Price_Woolworths || 'N/A'}`);
-
-            // Example: Accessing a specific product
-            const firstProduct = products[0];
-            console.log('First Product:', firstProduct);
+            if (discounted_product.Price_Coles !== null) {
+                productData = {
+                ProductName: discounted_product.Product,
+                Price: discounted_product.Price_Coles,
+                Store: "Coles"
+                };
+            } else if (discounted_product.Price_Aldi !== null) {
+                productData = {
+                ProductName: discounted_product.Product,
+                Price: discounted_product.Price_Aldi,
+                Store: "Aldi"
+                };
+            } else if (discounted_product.Price_IGA !== null) {
+                productData = {
+                ProductName: discounted_product.Product,
+                Price: discounted_product.Price_IGA,
+                Store: "IGA"
+                };
+            } else if (discounted_product.Price_Woolworths !== null) {
+                productData = {
+                ProductName: discounted_product.Product,
+                Price: discounted_product.Price_Woolworths,
+                Store: "Woolworths"
+                };
+            }
+            // send alert to frontend user for the discount
+            alert(`${productData.ProductName} is on sale at ${productData.Store} for $${productData.Price}`);
         })
         .catch(error => {
             console.log('Error fetching data:', error);
         });
-        })
-
-
-    // try {
-    //     const response = await fetch('http://localhost:5000/get-discounted-products', {
-    //         method: 'GET',
-    //         headers: { 'Content-Type': 'application/json'},
-    //     });
-    //     const result = await response.json();
-    //     if (response.ok) {
-
-    //         console.log(result)
-    //     }
-    //     else {
-    //         console.log(result.error)
-    //     }
-    // } catch (error) {
-    //     console.log(error)
-    // }
 });

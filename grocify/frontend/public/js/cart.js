@@ -14,14 +14,11 @@ function updateCart() {
             <div>${item.name}</div>
             <div></div>
             <div></div>
-            <div></div>
             <a href="${item.buyURL}" target="_blank" class="btn-small blue">Buy Now</a>
             <i class="material-icons" onclick="removeFromCart(${item.id})">close</i>
       </div>
   `).join('');
 
-  // let total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-  // cartTotal.textContent = total.toFixed(2);
 }
 
 function removeFromCart(id) {
@@ -93,6 +90,12 @@ async function updateCartPrices() {
      // Now update the cart with prices and store
     const cartContainer = document.getElementById("cart-header");
 
+    if (cart.length === 0) {
+      cartContainer.innerHTML = "<p>Your cart is empty.</p>";
+      cartTotal.textContent = "0.00";
+      return;
+  }
+
      // Update the cart with prices and store names
     cartContainer.innerHTML = cart.map(item => {
       const product = matchingProducts.find(product => product.cartProductName === item.name);
@@ -104,7 +107,6 @@ async function updateCartPrices() {
         <div class="cart-item">
           <div>${item.name}</div>
           <div>$${productPrice}</div>
-          <div></div>
           <div>${productStore}</div>
           <a href="${item.buyURL}" target="_blank" class="btn-small blue">Buy Now</a>
           <i class="material-icons" onclick="removeFromCart(${item.id})">close</i>

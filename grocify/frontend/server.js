@@ -20,10 +20,6 @@ io.on('connection', (socket) => {
         socket.emit('discountModel');
         console.log('Discount Model API call.');
     }, 10000)
-    // setInterval(() => {
-    //   socket.emit('discountModel');
-    //   console.log('Discount Model API call.');
-    // }, 30000)
   });
 
 http.listen(port, ()=>{
